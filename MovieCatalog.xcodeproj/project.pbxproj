@@ -13,6 +13,8 @@
 		BB6191E123240FC1007E4C48 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6191E023240FC1007E4C48 /* Common.framework */; };
 		BB6191E5232411BB007E4C48 /* MovieCatalogModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E4232411BB007E4C48 /* MovieCatalogModule.swift */; };
 		BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */; };
+		BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6191F323242344007E4C48 /* MovieCatalog.storyboard */; };
+		BB6191F723242389007E4C48 /* MovieCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		BB6191E023240FC1007E4C48 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6191E4232411BB007E4C48 /* MovieCatalogModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogModule.swift; sourceTree = "<group>"; };
 		BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogCoordinator.swift; sourceTree = "<group>"; };
+		BB6191F323242344007E4C48 /* MovieCatalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieCatalog.storyboard; sourceTree = "<group>"; };
+		BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		BB6191BA23240D81007E4C48 /* MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				BB6191F52324235E007E4C48 /* Controllers */,
+				BB6191F123242285007E4C48 /* Resources */,
 				BB6191E323241194007E4C48 /* Coordinators */,
 				BB6191E22324118C007E4C48 /* Module */,
 				BB6191BB23240D81007E4C48 /* MovieCatalog.h */,
@@ -118,6 +124,22 @@
 				BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BB6191F123242285007E4C48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191F323242344007E4C48 /* MovieCatalog.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BB6191F52324235E007E4C48 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +275,7 @@
 			files = (
 				BB6191E5232411BB007E4C48 /* MovieCatalogModule.swift in Sources */,
 				BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */,
+				BB6191F723242389007E4C48 /* MovieCatalogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
