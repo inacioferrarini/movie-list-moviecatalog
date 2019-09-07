@@ -10,6 +10,9 @@
 		BB6191C223240D81007E4C48 /* MovieCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6191B823240D81007E4C48 /* MovieCatalog.framework */; };
 		BB6191C723240D81007E4C48 /* MovieCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191C623240D81007E4C48 /* MovieCatalogTests.swift */; };
 		BB6191C923240D81007E4C48 /* MovieCatalog.h in Headers */ = {isa = PBXBuildFile; fileRef = BB6191BB23240D81007E4C48 /* MovieCatalog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB6191E123240FC1007E4C48 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6191E023240FC1007E4C48 /* Common.framework */; };
+		BB6191E5232411BB007E4C48 /* MovieCatalogModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E4232411BB007E4C48 /* MovieCatalogModule.swift */; };
+		BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		BB6191C123240D81007E4C48 /* MovieCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6191C623240D81007E4C48 /* MovieCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogTests.swift; sourceTree = "<group>"; };
 		BB6191C823240D81007E4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6191E023240FC1007E4C48 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6191E4232411BB007E4C48 /* MovieCatalogModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogModule.swift; sourceTree = "<group>"; };
+		BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6191E123240FC1007E4C48 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,7 @@
 				BB6191BA23240D81007E4C48 /* MovieCatalog */,
 				BB6191C523240D81007E4C48 /* MovieCatalogTests */,
 				BB6191B923240D81007E4C48 /* Products */,
+				BB6191DF23240FC1007E4C48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +79,8 @@
 		BB6191BA23240D81007E4C48 /* MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				BB6191E323241194007E4C48 /* Coordinators */,
+				BB6191E22324118C007E4C48 /* Module */,
 				BB6191BB23240D81007E4C48 /* MovieCatalog.h */,
 				BB6191BC23240D81007E4C48 /* Info.plist */,
 			);
@@ -84,6 +94,30 @@
 				BB6191C823240D81007E4C48 /* Info.plist */,
 			);
 			path = MovieCatalogTests;
+			sourceTree = "<group>";
+		};
+		BB6191DF23240FC1007E4C48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191E023240FC1007E4C48 /* Common.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB6191E22324118C007E4C48 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191E4232411BB007E4C48 /* MovieCatalogModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		BB6191E323241194007E4C48 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +183,7 @@
 				TargetAttributes = {
 					BB6191B723240D81007E4C48 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					BB6191C023240D81007E4C48 = {
 						CreatedOnToolsVersion = 10.3;
@@ -215,6 +250,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6191E5232411BB007E4C48 /* MovieCatalogModule.swift in Sources */,
+				BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +399,7 @@
 		BB6191CD23240D81007E4C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -379,6 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.inacio.concrete.MovieCatalog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,6 +426,7 @@
 		BB6191CE23240D81007E4C48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -412,6 +452,7 @@
 		BB6191D023240D81007E4C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
 				INFOPLIST_FILE = MovieCatalogTests/Info.plist;
@@ -430,6 +471,7 @@
 		BB6191D123240D81007E4C48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
 				INFOPLIST_FILE = MovieCatalogTests/Info.plist;
