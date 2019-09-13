@@ -20,7 +20,8 @@ public class MovieCatalogCoordinator: Coordinator {
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        return vc
+        vc.title = "Movie Catalog"
+        return UINavigationController(rootViewController: vc)
     }()
     
     public func start() {
