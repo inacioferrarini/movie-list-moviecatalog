@@ -10,7 +10,7 @@ public class MovieCatalogCoordinator: Coordinator {
     
     lazy var tabBarItem: UITabBarItem? = {
         return UITabBarItem(title: "Movies",
-                            image: Assets.Icons.Modules.Catalog,
+                            image: Assets.Icons.Modules.catalog,
                             selectedImage: nil)
     }()
 
