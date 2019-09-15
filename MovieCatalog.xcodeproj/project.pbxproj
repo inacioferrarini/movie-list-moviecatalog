@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB58BFE2232EBB3600A13142 /* MovieCatalogCoordinator.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB58BFE0232EBB3600A13142 /* MovieCatalogCoordinator.strings */; };
 		BB6191C223240D81007E4C48 /* MovieCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6191B823240D81007E4C48 /* MovieCatalog.framework */; };
 		BB6191C723240D81007E4C48 /* MovieCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191C623240D81007E4C48 /* MovieCatalogTests.swift */; };
 		BB6191C923240D81007E4C48 /* MovieCatalog.h in Headers */ = {isa = PBXBuildFile; fileRef = BB6191BB23240D81007E4C48 /* MovieCatalog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB58BFE3232EBB3A00A13142 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/MovieCatalogCoordinator.strings"; sourceTree = "<group>"; };
+		BB58BFE4232EBB3B00A13142 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MovieCatalogCoordinator.strings"; sourceTree = "<group>"; };
 		BB6191B823240D81007E4C48 /* MovieCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6191BB23240D81007E4C48 /* MovieCatalog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCatalog.h; sourceTree = "<group>"; };
 		BB6191BC23240D81007E4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */,
+				BB58BFE0232EBB3600A13142 /* MovieCatalogCoordinator.strings */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -217,7 +221,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				"en-US",
+				"pt-BR",
 			);
 			mainGroup = BB6191AE23240D81007E4C48;
 			productRefGroup = BB6191B923240D81007E4C48 /* Products */;
@@ -235,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB58BFE2232EBB3600A13142 /* MovieCatalogCoordinator.strings in Resources */,
 				BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +302,18 @@
 			targetProxy = BB6191C323240D81007E4C48 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB58BFE0232EBB3600A13142 /* MovieCatalogCoordinator.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB58BFE3232EBB3A00A13142 /* en-US */,
+				BB58BFE4232EBB3B00A13142 /* pt-BR */,
+			);
+			name = MovieCatalogCoordinator.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BB6191CA23240D81007E4C48 /* Debug */ = {

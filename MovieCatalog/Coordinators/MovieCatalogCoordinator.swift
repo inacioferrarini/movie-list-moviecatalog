@@ -9,7 +9,7 @@ public class MovieCatalogCoordinator: Coordinator {
     }
     
     lazy var tabBarItem: UITabBarItem? = {
-        return UITabBarItem(title: "Movies",
+        return UITabBarItem(title: tabBarItemTitle,
                             image: Assets.Icons.Modules.catalog,
                             selectedImage: nil)
     }()
@@ -20,7 +20,7 @@ public class MovieCatalogCoordinator: Coordinator {
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        vc.title = "Movie Catalog"
+        vc.title = tabBarItemTitle   // HERE   -- Movie To ViewController
         return UINavigationController(rootViewController: vc)
     }()
     
@@ -28,7 +28,14 @@ public class MovieCatalogCoordinator: Coordinator {
         var viewControllers = tabBar.viewControllers ?? []
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
-        print("starting MovieCatalogCoordinator ... ")
     }
-    
+
+}
+
+extension MovieCatalogCoordinator: Internationalizable {
+
+    var tabBarItemTitle: String {
+        return string("tabBarItemTitle", languageCode: "en-US")
+    }
+
 }
