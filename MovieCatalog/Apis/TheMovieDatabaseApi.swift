@@ -3,19 +3,38 @@ import Foundation
 /// Handles response from Movie API
 protocol FetchMoviesDelegate: AnyObject {
     
+    /// Handles popular movies response from API
+    ///
+    /// - Parameters:
+    ///   - searchResult: Returned movies from the API
+    ///   - request: The request identifier
     func handleSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request)
+    
+    /// Handles popular movies error from API
+    ///
+    /// - Parameters:
+    ///   - error: Returned error
+    ///   - request: The request identifier
     func handleError(error: Error, for request: TheMovieDatabaseApi.Request)
 
 }
 
+/// API for the Movie Database
 struct TheMovieDatabaseApi {
 
+    /// Available requests
+    ///
+    /// - popularMovies: Request for popular movies
     enum Request {
+        /// Request for popular movies
         case popularMovies
     }
     
     struct Movies {
         
+        /// Returns the popular Movies
+        ///
+        /// - Parameter delegate: Delegate to handle API response
         func fetchPopularMovies(delegate: FetchMoviesDelegate) {
             
             let postData = "{}".data(using: .utf8)
