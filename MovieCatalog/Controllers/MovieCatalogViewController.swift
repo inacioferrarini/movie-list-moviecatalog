@@ -24,7 +24,8 @@ extension MovieCatalogViewController: Storyboarded {}
 extension MovieCatalogViewController: FetchMoviesDelegate {
     
     func handleSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request) {
-        print("Request \(request), Success -> \(searchResult)")
+        movieCatalogView.searchResult = searchResult
+//        print("Request \(request), Success -> \(searchResult)")
     }
     
     func handleError(error: Error, for request: TheMovieDatabaseApi.Request) {
