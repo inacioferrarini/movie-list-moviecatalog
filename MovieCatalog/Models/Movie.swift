@@ -1,6 +1,6 @@
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Equatable {
     
     var title: String
     var overview: String
