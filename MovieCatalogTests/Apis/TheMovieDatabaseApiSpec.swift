@@ -25,6 +25,10 @@ class TheMovieDatabaseApiSpec: QuickSpec {
                         return fixture(filePath: stubPath!, headers: ["Content-Type": "application/json"])
                     }
                 }
+
+                afterEach {
+                    OHHTTPStubs.removeAllStubs()
+                }
                 
                 it("fetchPopularMovies must bring results") {
                     api.fetchPopularMovies(delegate: delegate!)
@@ -32,7 +36,7 @@ class TheMovieDatabaseApiSpec: QuickSpec {
                     expect(delegate?.searchResult).toNotEventually(beNil())
                     expect(delegate?.request).toEventually(equal(TheMovieDatabaseApi.Request.popularMovies))
                 }
-                
+
             }
             
             describe("Failure case") {
@@ -45,6 +49,10 @@ class TheMovieDatabaseApiSpec: QuickSpec {
                         return OHHTTPStubsResponse(error: notConnectedError)
                     }
 
+                }
+
+                afterEach {
+                    OHHTTPStubs.removeAllStubs()
                 }
 
                 it("fetchPopularMovies must handle errors") {
