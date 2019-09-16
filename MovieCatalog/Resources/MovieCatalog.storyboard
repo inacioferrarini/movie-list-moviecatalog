@@ -14,12 +14,15 @@
         <scene sceneID="ExR-Bg-ViL">
             <objects>
                 <viewController storyboardIdentifier="MovieCatalogViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bkG-jJ-HXd" customClass="MovieCatalogViewController" customModule="MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Miy-hc-zW9">
+                    <view key="view" contentMode="scaleToFill" id="Miy-hc-zW9" customClass="MovieCatalogView" customModule="MovieCatalog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ikG-ry-eGT"/>
                     </view>
+                    <connections>
+                        <outlet property="movieCatalogView" destination="Miy-hc-zW9" id="sej-z8-P6n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KX1-hO-cSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

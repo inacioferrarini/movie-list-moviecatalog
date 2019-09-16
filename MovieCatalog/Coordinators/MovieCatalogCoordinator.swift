@@ -16,7 +16,6 @@ public class MovieCatalogCoordinator: Coordinator {
 
     public lazy var viewController: UIViewController = {
         guard let vc = MovieCatalogViewController.instantiate(from: "MovieCatalog") else { return UIViewController() }
-        vc.view.backgroundColor = UIColor.blue
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }

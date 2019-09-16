@@ -1,7 +1,15 @@
 import Common
 
 class MovieCatalogViewController: UIViewController {
-
+    
+    
+    // MARK: - Outlets
+    
+    @IBOutlet var movieCatalogView: MovieCatalogView!
+    
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
