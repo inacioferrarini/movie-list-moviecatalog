@@ -4,8 +4,17 @@ class MovieCatalogView: UIView {
 
 
     // MARK: - Outlets
-    
+
     @IBOutlet var contentView: UIView!
+
+
+    // MARK: - Properties
+
+    var searchResult: SearchResult? {
+        didSet {
+            
+        }
+    }
 
 
     // MARK: - Initialization
