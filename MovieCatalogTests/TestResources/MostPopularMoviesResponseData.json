@@ -1,0 +1,403 @@
+{
+    "page": 1,
+    "total_results": 10000,
+    "total_pages": 500,
+    "results": [
+        {
+            "popularity": 545.742,
+            "vote_count": 552,
+            "video": false,
+            "poster_path": "/zfE0R94v1E8cuKAerbskfD3VfUt.jpg",
+            "id": 474350,
+            "adult": false,
+            "backdrop_path": "/4W0FnjSGn4x0mKZlBRx8OjFxQUM.jpg",
+            "original_language": "en",
+            "original_title": "It Chapter Two",
+            "genre_ids": [
+                35,
+                27
+            ],
+            "title": "It Chapter Two",
+            "vote_average": 7.2,
+            "overview": "27 years after overcoming the malevolent supernatural entity Pennywise, the former members of the Losers' Club, who have grown up and moved away from Derry, are brought back together by a devastating phone call.",
+            "release_date": "2019-09-06"
+        },
+        {
+            "popularity": 335.257,
+            "vote_count": 3495,
+            "video": false,
+            "poster_path": "/lcq8dVxeeOqHvvgcte707K0KVx5.jpg",
+            "id": 429617,
+            "adult": false,
+            "backdrop_path": "/5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
+            "original_language": "en",
+            "original_title": "Spider-Man: Far from Home",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "title": "Spider-Man: Far from Home",
+            "vote_average": 7.7,
+            "overview": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+            "release_date": "2019-07-02"
+        },
+        {
+            "popularity": 309.098,
+            "vote_count": 510,
+            "video": false,
+            "poster_path": "/a4BfxRK8dBgbQqbRxPs8kmLd8LG.jpg",
+            "id": 429203,
+            "adult": false,
+            "backdrop_path": "/6X2YjjYcs8XyZRDmJAHNDlls7L4.jpg",
+            "original_language": "en",
+            "original_title": "The Old Man & the Gun",
+            "genre_ids": [
+                35,
+                80,
+                18
+            ],
+            "title": "The Old Man & the Gun",
+            "vote_average": 6.4,
+            "overview": "The true story of Forrest Tucker, from his audacious escape from San Quentin at the age of 70 to an unprecedented string of heists that confounded authorities and enchanted the public. Wrapped up in the pursuit are a detective, who becomes captivated with Forrest’s commitment to his craft, and a woman, who loves him in spite of his chosen profession.",
+            "release_date": "2018-09-28"
+        },
+        {
+            "popularity": 238.76,
+            "vote_count": 51,
+            "video": false,
+            "poster_path": "/zBhv8rsLOfpFW2M5b6wW78Uoojs.jpg",
+            "id": 540901,
+            "adult": false,
+            "backdrop_path": "/jTab4cf4X1dJJVS4F8UOGuesvPd.jpg",
+            "original_language": "en",
+            "original_title": "Hustlers",
+            "genre_ids": [
+                35,
+                80,
+                18
+            ],
+            "title": "Hustlers",
+            "vote_average": 6.8,
+            "overview": "A crew of savvy former strip club employees band together to turn the tables on their Wall Street clients.",
+            "release_date": "2019-09-13"
+        },
+        {
+            "popularity": 221.007,
+            "vote_count": 1759,
+            "video": false,
+            "poster_path": "/cCTJPelKGLhALq3r51A9uMonxKj.jpg",
+            "id": 320288,
+            "adult": false,
+            "backdrop_path": "/phxiKFDvPeQj4AbkvJLmuZEieDU.jpg",
+            "original_language": "en",
+            "original_title": "Dark Phoenix",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "title": "Dark Phoenix",
+            "vote_average": 6.1,
+            "overview": "The X-Men face their most formidable and powerful foe when one of their own, Jean Grey, starts to spiral out of control. During a rescue mission in outer space, Jean is nearly killed when she's hit by a mysterious cosmic force. Once she returns home, this force not only makes her infinitely more powerful, but far more unstable. The X-Men must now band together to save her soul and battle aliens that want to use Grey's new abilities to rule the galaxy.",
+            "release_date": "2019-06-07"
+        },
+        {
+            "popularity": 173.345,
+            "vote_count": 2448,
+            "video": false,
+            "poster_path": "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
+            "id": 458156,
+            "adult": false,
+            "backdrop_path": "/stemLQMLDrlpfIlZ5OjllOPT8QX.jpg",
+            "original_language": "en",
+            "original_title": "John Wick: Chapter 3 – Parabellum",
+            "genre_ids": [
+                28,
+                80,
+                53
+            ],
+            "title": "John Wick: Chapter 3 – Parabellum",
+            "vote_average": 7.1,
+            "overview": "Super-assassin John Wick returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin’s guild, the High Table, John Wick is excommunicado, but the world’s most ruthless hit men and women await his every turn.",
+            "release_date": "2019-05-17"
+        },
+        {
+            "popularity": 166.103,
+            "vote_count": 2437,
+            "video": false,
+            "poster_path": "/2bXbqYdUdNVa8VIWXVfclP2ICtT.jpg",
+            "id": 420818,
+            "adult": false,
+            "backdrop_path": "/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
+            "original_language": "en",
+            "original_title": "The Lion King",
+            "genre_ids": [
+                28,
+                12,
+                16,
+                18,
+                10751
+            ],
+            "title": "The Lion King",
+            "vote_average": 7.2,
+            "overview": "Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
+            "release_date": "2019-07-19"
+        },
+        {
+            "popularity": 163.922,
+            "vote_count": 8045,
+            "video": false,
+            "poster_path": "/jpfkzbIXgKZqCZAkEkFH2VYF63s.jpg",
+            "id": 920,
+            "adult": false,
+            "backdrop_path": "/a1MlbLBk5Sy6YvMbSuKfwGlDVlb.jpg",
+            "original_language": "en",
+            "original_title": "Cars",
+            "genre_ids": [
+                12,
+                16,
+                35,
+                10751
+            ],
+            "title": "Cars",
+            "vote_average": 6.7,
+            "overview": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
+            "release_date": "2006-06-09"
+        },
+        {
+            "popularity": 142.544,
+            "vote_count": 302,
+            "video": false,
+            "poster_path": "/fapXd3v9qTcNBTm39ZC4KUVQDNf.jpg",
+            "id": 423204,
+            "adult": false,
+            "backdrop_path": "/k2WyDw2NTUIWnuEs5gT7wgrCQg6.jpg",
+            "original_language": "en",
+            "original_title": "Angel Has Fallen",
+            "genre_ids": [
+                28
+            ],
+            "title": "Angel Has Fallen",
+            "vote_average": 5.6,
+            "overview": "Secret Service Agent Mike Banning is framed for the attempted assassination of the President and must evade his own agency and the FBI as he tries to uncover the real threat.",
+            "release_date": "2019-08-23"
+        },
+        {
+            "popularity": 128.983,
+            "vote_count": 1062,
+            "video": false,
+            "poster_path": "/keym7MPn1icW1wWfzMnW3HeuzWU.jpg",
+            "id": 384018,
+            "adult": false,
+            "backdrop_path": "/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg",
+            "original_language": "en",
+            "original_title": "Fast & Furious Presents: Hobbs & Shaw",
+            "genre_ids": [
+                28
+            ],
+            "title": "Fast & Furious Presents: Hobbs & Shaw",
+            "vote_average": 6.5,
+            "overview": "A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw.",
+            "release_date": "2019-08-02"
+        },
+        {
+            "popularity": 116.306,
+            "vote_count": 1358,
+            "video": false,
+            "poster_path": "/fQ40gmFM4p03tXwMxQQKh2cCBW4.jpg",
+            "id": 373571,
+            "adult": false,
+            "backdrop_path": "/cNt14e43I2DDW6Xd9zFhrP8eOcA.jpg",
+            "original_language": "en",
+            "original_title": "Godzilla: King of the Monsters",
+            "genre_ids": [
+                28,
+                878
+            ],
+            "title": "Godzilla: King of the Monsters",
+            "vote_average": 6.1,
+            "overview": "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species - thought to be mere myths - rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance.",
+            "release_date": "2019-05-31"
+        },
+        {
+            "popularity": 145.096,
+            "vote_count": 269,
+            "video": false,
+            "poster_path": "/AlN758e1JphXDV9zeh6ZK3Um2KT.jpg",
+            "id": 484641,
+            "adult": false,
+            "backdrop_path": "/4XYxM4ZHX2mtdZe0z1psNUr7rxK.jpg",
+            "original_language": "fr",
+            "original_title": "Anna",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "title": "Anna",
+            "vote_average": 6.6,
+            "overview": "Beneath Anna Poliatova's striking beauty lies a secret that will unleash her indelible strength and skill to become one of the world's most feared government assassins.",
+            "release_date": "2019-06-21"
+        },
+        {
+            "popularity": 172.307,
+            "vote_count": 4,
+            "video": false,
+            "poster_path": "/8L66hJyXptS9XBt5b4O7WkZuwYj.jpg",
+            "id": 578672,
+            "adult": false,
+            "backdrop_path": "/1MFURVRRsZCap7yG6CPxLbXFFMC.jpg",
+            "original_language": "ja",
+            "original_title": "L・DK ひとつ屋根の下、「スキ」がふたつ。",
+            "genre_ids": [
+                10749
+            ],
+            "title": "L-DK: Two Loves, Under One Roof",
+            "vote_average": 6.8,
+            "overview": "Aoi Nishimori and Shusei Kugayama are in love and they begin to live together secretly. Suddenly, Shusei's cousin Reon Kugayama comes to them. Their secret is discovered by Reon. Now, Aoi, Shusei and Reon begin to live together.",
+            "release_date": "2019-03-21"
+        },
+        {
+            "popularity": 123.518,
+            "vote_count": 125,
+            "video": false,
+            "poster_path": "/m0clsFEXidLVJ0TueqWOvvImOMh.jpg",
+            "id": 625450,
+            "adult": false,
+            "backdrop_path": "/8wfPjfUgmGpqCIW6gS0pS0pixnA.jpg",
+            "original_language": "en",
+            "original_title": "Tall Girl",
+            "genre_ids": [
+                35,
+                18,
+                10749
+            ],
+            "title": "Tall Girl",
+            "vote_average": 6.7,
+            "overview": "Jodi, the tallest girl in her high school, has always felt uncomfortable in her own skin. But after years of slouching, being made fun of, and avoiding attention at all costs, Jodi finally decides to find the confidence to stand tall.",
+            "release_date": "2019-09-13"
+        },
+        {
+            "popularity": 192.314,
+            "vote_count": 3238,
+            "video": false,
+            "poster_path": "/3iYQTLGoy7QnjcUYRJy4YrAgGvp.jpg",
+            "id": 420817,
+            "adult": false,
+            "backdrop_path": "/rVqY0Bo4Npf6EIONUROxjYAJfmD.jpg",
+            "original_language": "en",
+            "original_title": "Aladdin",
+            "genre_ids": [
+                12,
+                35,
+                14,
+                10749,
+                10751
+            ],
+            "title": "Aladdin",
+            "vote_average": 7.1,
+            "overview": "A kindhearted street urchin named Aladdin embarks on a magical adventure after finding a lamp that releases a wisecracking genie while a power-hungry Grand Vizier vies for the same lamp that has the power to make their deepest wishes come true.",
+            "release_date": "2019-05-24"
+        },
+        {
+            "popularity": 104.772,
+            "vote_count": 479,
+            "video": false,
+            "poster_path": "/7QPdjLr46huVv25W0eO2XZGOj3O.jpg",
+            "id": 515195,
+            "adult": false,
+            "backdrop_path": "/pWozCsrzMJzN8dbOm330sCKqdml.jpg",
+            "original_language": "en",
+            "original_title": "Yesterday",
+            "genre_ids": [
+                35,
+                14,
+                10402,
+                10749
+            ],
+            "title": "Yesterday",
+            "vote_average": 6.8,
+            "overview": "Jack Malik is a struggling singer-songwriter in an English seaside town whose dreams of fame are rapidly fading, despite the fierce devotion and support of his childhood best friend, Ellie. After a freak bus accident during a mysterious global blackout, Jack wakes up to discover that he's the only person on Earth who can remember The Beatles.",
+            "release_date": "2019-06-28"
+        },
+        {
+            "popularity": 112.747,
+            "vote_count": 372,
+            "video": false,
+            "poster_path": "/rpS7ROczWulqfaXG2klYapULXKm.jpg",
+            "id": 533642,
+            "adult": false,
+            "backdrop_path": "/vHse4QK31Vc3X7BKKU5GOQhYxv6.jpg",
+            "original_language": "en",
+            "original_title": "Child's Play",
+            "genre_ids": [
+                27,
+                878
+            ],
+            "title": "Child's Play",
+            "vote_average": 6,
+            "overview": "Karen, a single mother, gifts her son Andy a Buddi doll for his birthday, unaware of its more sinister nature. A contemporary re-imagining of the 1988 horror classic.",
+            "release_date": "2019-06-21"
+        },
+        {
+            "popularity": 99.626,
+            "vote_count": 9355,
+            "video": false,
+            "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+            "id": 299534,
+            "adult": false,
+            "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+            "original_language": "en",
+            "original_title": "Avengers: Endgame",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "title": "Avengers: Endgame",
+            "vote_average": 8.3,
+            "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+            "release_date": "2019-04-26"
+        },
+        {
+            "popularity": 96.939,
+            "vote_count": 10796,
+            "video": false,
+            "poster_path": "/5vHssUeVe25bMrof1HyaPyWgaP.jpg",
+            "id": 245891,
+            "adult": false,
+            "backdrop_path": "/iJlGxN0p1suzloBGvvBu3QSSlhT.jpg",
+            "original_language": "en",
+            "original_title": "John Wick",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "title": "John Wick",
+            "vote_average": 7.2,
+            "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
+            "release_date": "2014-10-24"
+        },
+        {
+            "popularity": 95.096,
+            "vote_count": 2119,
+            "video": false,
+            "poster_path": "/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg",
+            "id": 301528,
+            "adult": false,
+            "backdrop_path": "/m67smI1IIMmYzCl9axvKNULVKLr.jpg",
+            "original_language": "en",
+            "original_title": "Toy Story 4",
+            "genre_ids": [
+                12,
+                16,
+                35,
+                10751
+            ],
+            "title": "Toy Story 4",
+            "vote_average": 7.7,
+            "overview": "Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called \"Forky\" to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.",
+            "release_date": "2019-06-21"
+        }
+    ]
+}
