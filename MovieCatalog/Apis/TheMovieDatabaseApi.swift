@@ -45,9 +45,11 @@ struct TheMovieDatabaseApi {
             request.httpMethod = "GET"
             request.httpBody = postData
 
-            let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, _, error) in
                 if let error = error {
-                    delegate.handleError(error: error, for: .popularMovies)
+                    DispatchQueue.main.async {
+                        delegate.handleError(error: error, for: .popularMovies)
+                    }
                 } else {
                     var searchResult: SearchResult?
                     if let data = data {
@@ -55,7 +57,9 @@ struct TheMovieDatabaseApi {
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         searchResult = try? decoder.decode(SearchResult.self, from: data)
                     }
-                    delegate.handleSuccess(searchResult: searchResult, for: .popularMovies)
+                    DispatchQueue.main.async {
+                        delegate.handleSuccess(searchResult: searchResult, for: .popularMovies)
+                    }
                 }
             })
             dataTask.resume()
