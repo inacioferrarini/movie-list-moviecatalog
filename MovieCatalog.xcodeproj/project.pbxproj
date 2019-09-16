@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB19D9B523304634004DECD6 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19D9B323304634004DECD6 /* MovieCollectionViewCell.swift */; };
+		BB19D9B623304634004DECD6 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB19D9B423304634004DECD6 /* MovieCollectionViewCell.xib */; };
 		BB58BFE2232EBB3600A13142 /* MovieCatalogCoordinator.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB58BFE0232EBB3600A13142 /* MovieCatalogCoordinator.strings */; };
 		BB6191C223240D81007E4C48 /* MovieCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6191B823240D81007E4C48 /* MovieCatalog.framework */; };
 		BB6191C923240D81007E4C48 /* MovieCatalog.h in Headers */ = {isa = PBXBuildFile; fileRef = BB6191BB23240D81007E4C48 /* MovieCatalog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB19D9B323304634004DECD6 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB19D9B423304634004DECD6 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB58BFE3232EBB3A00A13142 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/MovieCatalogCoordinator.strings"; sourceTree = "<group>"; };
 		BB58BFE4232EBB3B00A13142 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MovieCatalogCoordinator.strings"; sourceTree = "<group>"; };
 		BB6191B823240D81007E4C48 /* MovieCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB19D9B223304610004DECD6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BB19D9B323304634004DECD6 /* MovieCollectionViewCell.swift */,
+				BB19D9B423304634004DECD6 /* MovieCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BB6191AE23240D81007E4C48 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 		BB6191BA23240D81007E4C48 /* MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				BB19D9B223304610004DECD6 /* Cells */,
 				BBC60A02232FA087002F5095 /* Views */,
 				BBC609EF232F88E4002F5095 /* Apis */,
 				BBC609E1232F8311002F5095 /* Models */,
@@ -335,6 +349,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				"en-US",
 				"pt-BR",
 			);
@@ -357,6 +372,7 @@
 				BB58BFE2232EBB3600A13142 /* MovieCatalogCoordinator.strings in Resources */,
 				BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */,
 				BBC60A08232FA3A9002F5095 /* MovieCatalogView.xib in Resources */,
+				BB19D9B623304634004DECD6 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +419,7 @@
 				BBC609F1232F8AA6002F5095 /* TheMovieDatabaseApi.swift in Sources */,
 				BBC60A0A232FA430002F5095 /* MovieCatalogView.swift in Sources */,
 				BB6191F723242389007E4C48 /* MovieCatalogViewController.swift in Sources */,
+				BB19D9B523304634004DECD6 /* MovieCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
