@@ -57,15 +57,12 @@ class MovieCatalogView: UIView {
     }
     
     private func setupSearchField() {
-//        searchBar.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
-//searchBar.tintColor = Assets.Colors.NavigationBar.backgroundColor
-searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
         searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
         searchBar.showsCancelButton = false
         searchBar.showsSearchResultsButton = false
         searchBar.delegate = self
         searchBar.placeholder = "Search"
-//        searchBar.setCenteredPlaceHolder()
     }
     
     private func setupCollectionView() {
