@@ -1,10 +1,20 @@
 import Common
 
+protocol MovieCatalogViewControllerDelegate: AnyObject {
+    
+    func movieCatalogViewController(_ movieCatalogViewController: MovieCatalogViewController, didSelected movie: Movie)
+    
+}
+
 class MovieCatalogViewController: UIViewController {
     
     // MARK: - Outlets
     
     @IBOutlet private(set) weak var movieCatalogView: MovieCatalogView!
+    
+    // MARK: - Properties
+    
+    weak var delegate: MovieCatalogViewControllerDelegate?
     
     // MARK: - Lifecycle
     
@@ -40,7 +50,7 @@ extension MovieCatalogViewController: FetchMoviesDelegate {
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
     func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie) {
-        print("--> selected movie: \(movie)")
+        delegate?.movieCatalogViewController(self, didSelected: movie)
     }
 
 }
