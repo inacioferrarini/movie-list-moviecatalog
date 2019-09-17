@@ -1,6 +1,12 @@
 import UIKit
 import Common
 
+protocol MovieCatalogViewDelegate: AnyObject {
+    
+    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie)
+    
+}
+
 class MovieCatalogView: UIView {
 
     // MARK: - Outlets
@@ -8,8 +14,10 @@ class MovieCatalogView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var dataProvider = ArrayDataProvider<Movie>(section: [])
-    var dataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
+    // MARK: - Private Properties
+    
+    private var dataProvider = ArrayDataProvider<Movie>(section: [])
+    private var dataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
     
     // MARK: - Properties
 
@@ -19,10 +27,11 @@ class MovieCatalogView: UIView {
                 dataProvider.elements = [searchResult.results]
                 dataSource?.refresh()
             }
-            print("setting ... \(searchResult)")
         }
     }
 
+    weak var delegate: MovieCatalogViewDelegate?
+    
     // MARK: - Initialization
 
     override init(frame: CGRect) {
@@ -51,6 +60,30 @@ class MovieCatalogView: UIView {
         let dataSource = CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>(for: collectionView, with: dataProvider)
         collectionView.dataSource = dataSource
         self.dataSource = dataSource
+        collectionView.delegate = self
     }
 
+}
+
+extension MovieCatalogView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movie = dataProvider[indexPath] else { return }
+        delegate?.moviewCatalogView(self, didSelected: movie)
+    }
+
+}
+
+extension MovieCatalogView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let margin = CGFloat(30)
+        let width = (self.collectionView.bounds.width - margin) / 2
+        let height = width * 1.25
+        return CGSize(width: width, height: height)
+    }
+    
 }

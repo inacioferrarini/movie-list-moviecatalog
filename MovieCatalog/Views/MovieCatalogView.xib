@@ -22,22 +22,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jzI-5p-1Hj">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DNq-EY-fU0">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DNq-EY-fU0">
                         <size key="itemSize" width="200" height="200"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jzI-5p-1Hj" secondAttribute="bottom" id="1A0-pR-8VO"/>
-                <constraint firstItem="jzI-5p-1Hj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="4Uh-HM-pYE"/>
-                <constraint firstItem="jzI-5p-1Hj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ODh-8t-hOZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jzI-5p-1Hj" secondAttribute="trailing" id="OJb-N4-TD3"/>
+                <constraint firstAttribute="bottom" secondItem="jzI-5p-1Hj" secondAttribute="bottom" id="1A0-pR-8VO"/>
+                <constraint firstItem="jzI-5p-1Hj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Uh-HM-pYE"/>
+                <constraint firstItem="jzI-5p-1Hj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ODh-8t-hOZ"/>
+                <constraint firstAttribute="trailing" secondItem="jzI-5p-1Hj" secondAttribute="trailing" id="OJb-N4-TD3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
