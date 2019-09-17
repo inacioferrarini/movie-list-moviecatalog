@@ -11,9 +11,9 @@ class MovieCatalogView: UIView {
 
     // MARK: - Outlets
 
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private(set) weak var contentView: UIView!
+    @IBOutlet private(set) weak var searchBar: UISearchBar!
+    @IBOutlet private(set) weak var collectionView: UICollectionView!
 
     // MARK: - Private Properties
     

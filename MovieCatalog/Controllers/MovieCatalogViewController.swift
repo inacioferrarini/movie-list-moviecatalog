@@ -4,7 +4,7 @@ class MovieCatalogViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet var movieCatalogView: MovieCatalogView!
+    @IBOutlet private(set) weak var movieCatalogView: MovieCatalogView!
     
     // MARK: - Lifecycle
     
