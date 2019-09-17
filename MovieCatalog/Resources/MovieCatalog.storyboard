@@ -28,5 +28,23 @@
             </objects>
             <point key="canvasLocation" x="-570" y="141"/>
         </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="wNo-aa-rfA">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="nLr-4M-7we" customClass="MovieDetailsViewController" customModule="MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3hO-98-xhQ" customClass="MovieDetailsView" customModule="MovieCatalog" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tsS-Ss-5lf"/>
+                    </view>
+                    <connections>
+                        <outlet property="movieDetailsView" destination="3hO-98-xhQ" id="Ab3-El-U2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1d1-p4-qIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="255" y="141"/>
+        </scene>
     </scenes>
 </document>

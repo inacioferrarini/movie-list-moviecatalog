@@ -21,13 +21,25 @@ public class MovieCatalogCoordinator: Coordinator {
     }()
 
     public lazy var viewController: UIViewController = {
-        guard let vc = MovieCatalogViewController.instantiate(from: "MovieCatalog") else { return UIViewController() }
+        guard let vc = catalogViewController else { return UIViewController() }
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        vc.title = tabBarItemTitle   // HERE   -- Movie To ViewController
-        vc.delegate = self
         return UINavigationController(rootViewController: vc)
+    }()
+    
+    private lazy var catalogViewController: MovieCatalogViewController? = {
+        let vc = MovieCatalogViewController.instantiate(from: "MovieCatalog")
+        vc?.title = tabBarItemTitle   // HERE   -- Movie To ViewController
+        vc?.delegate = self
+        return vc
+    }()
+    
+    private lazy var detailsViewController: MovieDetailsViewController? = {
+        let vc = MovieDetailsViewController.instantiate(from: "MovieCatalog")
+        vc?.title = "DETAILS"   // HERE   -- Movie To ViewController
+        vc?.delegate = self
+        return vc
     }()
     
     // MARK: - Public Methods
@@ -42,6 +54,11 @@ public class MovieCatalogCoordinator: Coordinator {
     
     func showMovieDetails(_ movie: Movie) {
         print("Movie was selected: \(movie)")
+        if let nav = self.viewController as? UINavigationController,
+            let vc = detailsViewController {
+            vc.movie = movie
+            nav.pushViewController(vc, animated: true)
+        }
     }
     
 }
@@ -54,10 +71,14 @@ extension MovieCatalogCoordinator: Internationalizable {
 
 }
 
-extension  MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
+extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
 
     func movieCatalogViewController(_ movieCatalogViewController: MovieCatalogViewController, didSelected movie: Movie) {
         self.showMovieDetails(movie)
     }
 
+}
+
+extension MovieCatalogCoordinator: MovieDetailsViewControllerDelegate {
+    
 }
