@@ -12,12 +12,9 @@ class MovieDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var delegate: MovieDetailsViewControllerDelegate?
-    var movie: Movie? {
-        didSet {
-            
-        }
-    }
+    weak var delegate: MovieDetailsViewControllerDelegate?
+
+    var movie: Movie?
     
     // MARK: - Lifecycle
     
@@ -26,6 +23,11 @@ class MovieDetailsViewController: UIViewController {
         self.setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        movieDetailsView.movie = self.movie
+    }
+        
     private func setup() {
         self.movieDetailsView.delegate = self
     }

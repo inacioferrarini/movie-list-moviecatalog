@@ -17,6 +17,12 @@ class MovieDetailsView: UIView {
     
     // MARK: - Properties
     
+    var movie: Movie? {
+        didSet {
+            setup(with: movie)
+        }
+    }
+    
     weak var delegate: MovieDetailsViewDelegate?
     
     // MARK: - Initialization
@@ -40,6 +46,9 @@ class MovieDetailsView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    
+    private func setup(with movie: Movie?) {
+        guard let movie = movie else { return }
+        print("view setup with \(movie)")
+    }
     
 }

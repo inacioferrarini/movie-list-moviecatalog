@@ -14,7 +14,7 @@ class MovieCatalogViewController: UIViewController {
     
     // MARK: - Properties
     
-    var delegate: MovieCatalogViewControllerDelegate?
+    weak var delegate: MovieCatalogViewControllerDelegate?
     
     // MARK: - Lifecycle
     
