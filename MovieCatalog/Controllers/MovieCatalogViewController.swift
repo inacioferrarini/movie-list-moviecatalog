@@ -18,13 +18,24 @@ class MovieCatalogViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    let dispatchGroup = DispatchGroup()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
         
         let api = TheMovieDatabaseApi.Movies()
-        api.fetchPopularMovies(delegate: self)
-        
+        DispatchQueue.global().async { [unowned self] in
+            self.dispatchGroup.enter()
+            api.fetchPopularMovies(delegate: self)
+        }
+        DispatchQueue.global().async { [unowned self] in
+            self.dispatchGroup.enter()
+            api.fetchGenres(delegate: self)
+        }
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            print("TERMINEI O DOWNLOAD")
+        }
     }
     
     private func setup() {
@@ -36,15 +47,35 @@ class MovieCatalogViewController: UIViewController {
 extension MovieCatalogViewController: Storyboarded {}
 
 extension MovieCatalogViewController: FetchMoviesDelegate {
-    
-    func handleSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request) {
+
+    func handleFetchMovieSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request) {
+        print("... handleFetchMovieSuccess")
         movieCatalogView.searchResult = searchResult
+        dispatchGroup.leave()
     }
-    
-    func handleError(error: Error, for request: TheMovieDatabaseApi.Request) {
+
+    func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
+        print("... handleFetchMovieError")
         print("Request \(request), Error -> \(error)")
+        dispatchGroup.leave()
     }
-    
+
+}
+
+extension MovieCatalogViewController: FetchGenresDelegate {
+
+    func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request) {
+        print("... handleFetchGenresSuccess")
+        print("---> Genres \(genres)")
+        dispatchGroup.leave()
+    }
+
+    func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request) {
+        print("... handleFetchGenresError")
+        print("Request \(request), Error -> \(error)")
+        dispatchGroup.leave()
+    }
+
 }
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
