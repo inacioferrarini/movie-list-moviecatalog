@@ -23,7 +23,19 @@ class MovieCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
+    }
+    
+    private func setup() {
+        self.movieCatalogView.delegate = self
+    }
+    
+    private func fetchData() {
+        movieCatalogView.showLoadingView()
         let api = TheMovieDatabaseApi.Movies()
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
@@ -33,13 +45,9 @@ class MovieCatalogViewController: UIViewController {
             self.dispatchGroup.enter()
             api.fetchGenres(delegate: self)
         }
-        dispatchGroup.notify(queue: DispatchQueue.main) {
-            print("TERMINEI O DOWNLOAD")
+        dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
+            self.movieCatalogView.hideLoadingView()
         }
-    }
-    
-    private func setup() {
-        self.movieCatalogView.delegate = self
     }
     
 }
