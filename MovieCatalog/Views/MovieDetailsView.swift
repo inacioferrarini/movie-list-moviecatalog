@@ -58,32 +58,27 @@ class MovieDetailsView: UIView {
     
     private func setup(with movie: Movie?) {
         guard let movie = movie else { return }
-        
-//        posterImage =  movie.posterPath -- logic for cache and downloading the poster
-        if let posterImageUrl = URL(string: "http://image.tmdb.org/t/p/w500//" + (movie.posterPath ?? "")) {
-            DispatchQueue.global().async {
-                if let posterImageData = try? Data(contentsOf: posterImageUrl) {
-                    DispatchQueue.main.async {
-                        self.posterImage.image = UIImage(data: posterImageData)
-                    }
-                }
+
+        if let url = URL(string: "http://image.tmdb.org/t/p/w500//" + (movie.posterPath ?? "")) {
+            UIImage.download(from: url) { [unowned self] (image, _) in
+                self.posterImage.image = image
             }
         }
 
         titleLabel.text = movie.title ?? ""
-        
+
         updateFavoriteButton()
-        
+
         releaseDateLabel.text = ""
         if let year = movie.releaseDate?.toDate()?.year {
             releaseDateLabel.text = "\(year)"
         }
-        
+
         genresLabel.text = ""
         if let genres = movie.genreIds {
             genresLabel.text = String(describing: genres)
         }
-        
+
         overviewLabel.text = movie.overview ?? ""
     }
     

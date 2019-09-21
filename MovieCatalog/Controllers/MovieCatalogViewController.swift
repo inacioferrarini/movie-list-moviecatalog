@@ -10,7 +10,7 @@ class MovieCatalogViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet private(set) weak var movieCatalogView: MovieCatalogView!
+    @IBOutlet weak private(set) var movieCatalogView: MovieCatalogView!
     
     // MARK: - Properties
     
