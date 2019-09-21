@@ -11,9 +11,17 @@ class MovieDetailsView: UIView {
 
     // MARK: - Outlets
     
-    @IBOutlet private(set) weak var contentView: UIView!
+    @IBOutlet weak private(set) var contentView: UIView!
+    @IBOutlet weak private(set) var posterImage: UIImageView!
+    @IBOutlet weak private(set) var titleLabel: UILabel!
+    @IBOutlet weak private(set) var releaseDateLabel: UILabel!
+    @IBOutlet weak private(set) var genresLabel: UILabel!
+    @IBOutlet weak private(set) var overviewLabel: UILabel!
+    @IBOutlet weak private(set) var favoriteButton: UIButton!
     
     // MARK: - Private Properties
+    
+    private var isFavorite = false
     
     // MARK: - Properties
     
@@ -46,9 +54,51 @@ class MovieDetailsView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    // MARK: -
+    
     private func setup(with movie: Movie?) {
         guard let movie = movie else { return }
-        print("view setup with \(movie)")
+        
+//        posterImage =  movie.posterPath -- logic for cache and downloading the poster
+        if let posterImageUrl = URL(string: "http://image.tmdb.org/t/p/w500//" + (movie.posterPath ?? "")) {
+            DispatchQueue.global().async {
+                if let posterImageData = try? Data(contentsOf: posterImageUrl) {
+                    DispatchQueue.main.async {
+                        self.posterImage.image = UIImage(data: posterImageData)
+                    }
+                }
+            }
+        }
+
+        titleLabel.text = movie.title ?? ""
+        
+        updateFavoriteButton()
+        
+        releaseDateLabel.text = ""
+        if let year = movie.releaseDate?.toDate()?.year {
+            releaseDateLabel.text = "\(year)"
+        }
+        
+        genresLabel.text = ""
+        if let genres = movie.genreIds {
+            genresLabel.text = String(describing: genres)
+        }
+        
+        overviewLabel.text = movie.overview ?? ""
+    }
+    
+    func updateFavoriteButton() {
+        let favoriteImage = self.isFavorite
+            ? Assets.Icons.Status.favoriteFull?.withRenderingMode(.alwaysOriginal)
+            : Assets.Icons.Status.favoriteGray?.withRenderingMode(.alwaysOriginal)
+        favoriteButton.setImage(favoriteImage, for: .normal)
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func favorite() {
+        self.isFavorite = !isFavorite
+        updateFavoriteButton()
     }
     
 }
