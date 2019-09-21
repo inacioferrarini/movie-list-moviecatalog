@@ -37,9 +37,9 @@ class MovieDetailsViewController: UIViewController {
 extension MovieDetailsViewController: Storyboarded {}
 
 extension MovieDetailsViewController: MovieDetailsViewDelegate {
-    
-    func movieDetailsView(_ moviewDetailsView: MovieDetailsView, didFavorite movie: Movie) {
-        
+
+    func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
+        print("Favorite \(favorite) changed for: \(movie)")
     }
 
 }
