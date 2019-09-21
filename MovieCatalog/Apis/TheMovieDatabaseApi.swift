@@ -37,13 +37,11 @@ struct TheMovieDatabaseApi {
         /// - Parameter delegate: Delegate to handle API response
         func fetchPopularMovies(delegate: FetchMoviesDelegate) {
             
-            let postData = "{}".data(using: .utf8)
             var request = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?page=1&api_key=389b2710a34413b185b37464a7cc60ce")!,
                                      cachePolicy: .useProtocolCachePolicy,
                                      timeoutInterval: 10.0)
             
             request.httpMethod = "GET"
-            request.httpBody = postData
 
             let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, _, error) in
                 if let error = error {
