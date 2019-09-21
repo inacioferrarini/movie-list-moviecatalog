@@ -35,11 +35,21 @@ class MovieCatalogView: UIView {
     
     // MARK: - Initialization
 
+    /// Initializes the view with using `UIScreen.main.bounds` as frame.
+    public required init() {
+        super.init(frame: UIScreen.main.bounds)
+        commonInit()
+    }
+
+    /// Initializes the view with using the given `frame`.
+    /// - Parameter frame: Initial view dimensions.
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
+    /// Initializes the view with using the given `coder`.
+    /// - Parameter aDecoder: NSCoder to be used.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
