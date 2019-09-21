@@ -3,7 +3,7 @@ import Common
 
 protocol MovieDetailsViewDelegate: AnyObject {
     
-    func movieDetailsView(_ moviewDetailsView: MovieDetailsView, didFavorite movie: Movie)
+    func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie)
     
 }
 
@@ -34,12 +34,22 @@ class MovieDetailsView: UIView {
     weak var delegate: MovieDetailsViewDelegate?
     
     // MARK: - Initialization
+
+    /// Initializes the view with using `UIScreen.main.bounds` as frame.
+    public required init() {
+        super.init(frame: UIScreen.main.bounds)
+        commonInit()
+    }
     
+    /// Initializes the view with using the given `frame`.
+    /// - Parameter frame: Initial view dimensions.
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
+    /// Initializes the view with using the given `coder`.
+    /// - Parameter aDecoder: NSCoder to be used.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -94,6 +104,9 @@ class MovieDetailsView: UIView {
     @IBAction func favorite() {
         self.isFavorite = !isFavorite
         updateFavoriteButton()
+        if let movie = movie {
+            self.delegate?.movieDetailsView(self, favorite: self.isFavorite, for: movie)
+        }
     }
     
 }
