@@ -12,7 +12,7 @@ class MovieCollectionViewCell: UICollectionViewCell, Configurable {
     // MARK: - Setup
     
     func setup(with value: Movie) {
-        if let posterImageUrl = URL(string: "http://image.tmdb.org/t/p/w185//" + value.posterPath) {
+        if let posterImageUrl = URL(string: "http://image.tmdb.org/t/p/w185//" + (value.posterPath ?? "")) {
             DispatchQueue.global().async {
                 if let posterImageData = try? Data(contentsOf: posterImageUrl) {
                     DispatchQueue.main.async {
