@@ -80,8 +80,8 @@ struct TheMovieDatabaseApi {
         /// Returns the popular Movies
         ///
         /// - Parameter delegate: Delegate to handle API response
-        func fetchPopularMovies(delegate: FetchMoviesDelegate) {
-            guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?page=1&api_key=389b2710a34413b185b37464a7cc60ce") else {
+        func fetchPopularMovies(delegate: FetchMoviesDelegate, page: Int = 1) {
+            guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?page=1&api_key=389b2710a34413b185b37464a7cc60ce&page=\(page)") else {
                 let error = NSError(domain: "", code: 404, userInfo: nil)
                 delegate.handleFetchMovieError(error: error, for: .popularMovies)
                 return
