@@ -54,14 +54,19 @@ class MovieCatalogViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
+        let movieSearchResult: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        if movieSearchResult == nil {
+            fetchFavoriteMoviesData()
+        } else {
+            movieCatalogView.movieSearchResult = movieSearchResult
+        }
     }
 
     private func setup() {
         self.movieCatalogView.delegate = self
     }
 
-    private func fetchData() {
+    private func fetchFavoriteMoviesData() {
         movieCatalogView.showLoadingView()
         let api = TheMovieDatabaseApi.Movies()
         DispatchQueue.global().async { [unowned self] in
@@ -83,9 +88,21 @@ extension MovieCatalogViewController: Storyboarded {}
 
 extension MovieCatalogViewController: FetchMoviesDelegate {
 
+    func mergeResults(searchResult: MovieSearchResult?, in previousSearchResult: MovieSearchResult?) -> MovieSearchResult? {
+        guard let previousSearchResult = previousSearchResult else { return searchResult }
+        guard var searchResult = searchResult else { return previousSearchResult }
+        var results = previousSearchResult.results
+        let newResults = searchResult.results
+        results += newResults
+        searchResult.results = results
+        return searchResult
+    }
+
     func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
-        appContext?.set(value: searchResult as Any, for: MovieListSearchResultKey)
-        movieCatalogView.searchResult = searchResult
+        let previousSearchResult: MovieSearchResult? = appContext?.get(key: MovieListSearchResultKey)
+        let updatedSearchResult = mergeResults(searchResult: searchResult, in: previousSearchResult)
+        appContext?.set(value: updatedSearchResult as Any, for: MovieListSearchResultKey)
+        movieCatalogView.movieSearchResult = updatedSearchResult
         dispatchGroup.leave()
     }
 
@@ -116,6 +133,15 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
     func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie) {
         delegate?.movieCatalogViewController(self, didSelected: movie)
+    }
+
+    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int) {
+        let api = TheMovieDatabaseApi.Movies()
+        DispatchQueue.global().async { [unowned self] in
+            self.dispatchGroup.enter()
+            print("will fetch page \(page)")
+            api.fetchPopularMovies(delegate: self, page: page)
+         }
     }
 
 }

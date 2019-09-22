@@ -27,7 +27,7 @@ import Common
 protocol MovieCatalogViewDelegate: AnyObject {
 
     func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie)
-
+    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int)
 }
 
 class MovieCatalogView: UIView {
@@ -43,22 +43,24 @@ class MovieCatalogView: UIView {
     // MARK: - Private Properties
 
     private var dataProvider = ArrayDataProvider<Movie>(section: [])
-    private var dataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
+    private var collectionViewDataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
 
+    // swiftlint:disable weak_delegate
+    private var collectionViewDelegate: MovieCatalogCollectionViewDelegate<MovieCollectionViewCell, Movie>?
+    // swiftlint:enable weak_delegate
 
     // MARK: - Properties
 
-    var searchResult: MovieSearchResult? {
+    var movieSearchResult: MovieSearchResult? {
         didSet {
-            if let searchResult = searchResult {
-                dataProvider.elements = [searchResult.results]
-                dataSource?.refresh()
+            if let movieSearchResult = movieSearchResult {
+                dataProvider.elements = [movieSearchResult.results]
+                collectionViewDataSource?.refresh()
             }
         }
     }
 
     weak var delegate: MovieCatalogViewDelegate?
-
 
     // MARK: - Initialization
 
@@ -113,7 +115,7 @@ class MovieCatalogView: UIView {
         collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.simpleClassName())
         let dataSource = CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>(for: collectionView, with: dataProvider)
         collectionView.dataSource = dataSource
-        self.dataSource = dataSource
+        self.collectionViewDataSource = dataSource
         collectionView.delegate = self
     }
 
@@ -124,6 +126,28 @@ extension MovieCatalogView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movie = dataProvider[indexPath] else { return }
         delegate?.moviewCatalogView(self, didSelected: movie)
+    }
+
+    func shouldLoadNextPage() -> Bool {
+        guard let movieSearchResult = self.movieSearchResult else { return false }
+        return movieSearchResult.page <= movieSearchResult.totalPages
+    }
+
+    func loadNextPage() {
+        guard let movieSearchResult = self.movieSearchResult else { return }
+        let nextPage = movieSearchResult.page + 1
+        delegate?.moviewCatalogView(self, requestFavoritePage: nextPage)
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let endScrolling = scrollView.contentOffset.y + scrollView.frame.size.height
+        if endScrolling >= scrollView.contentSize.height {
+            if self.shouldLoadNextPage() {
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadNextPage()
+                }
+            }
+        }
     }
 
 }

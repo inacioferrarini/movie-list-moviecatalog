@@ -85,7 +85,6 @@ public class MovieCatalogCoordinator: Coordinator {
     // MARK: - Coordinator
 
     func showMovieDetails(_ movie: Movie) {
-        print("Movie was selected: \(movie)")
         if let nav = self.viewController as? UINavigationController,
             let vc = detailsViewController {
             vc.movie = movie
