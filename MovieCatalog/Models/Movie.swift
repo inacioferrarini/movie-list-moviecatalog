@@ -30,5 +30,6 @@ public struct Movie: Codable, Equatable {
     public var posterPath: String?
     public var genreIds: [Int]?
     public var releaseDate: String?
+    public var genreNames: String?
 
 }

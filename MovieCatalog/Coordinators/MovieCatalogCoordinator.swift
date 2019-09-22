@@ -106,7 +106,15 @@ extension MovieCatalogCoordinator: Internationalizable {
 extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
 
     func movieCatalogViewController(_ movieCatalogViewController: MovieCatalogViewController, didSelected movie: Movie) {
+        var movie = movie
+        movie.genreNames = updateMovieGenreNames(movie: movie)
         self.showMovieDetails(movie)
+    }
+
+    private func updateMovieGenreNames(movie: Movie, `default`: String = "") -> String {
+        guard let genreIds = movie.genreIds else { return `default` }
+        guard let genres: GenreListSearchResultType = appContext.get(key: GenreListSearchResultKey) else { return `default` }
+        return genres.names(for: genreIds).joined(separator: ", ")
     }
 
 }

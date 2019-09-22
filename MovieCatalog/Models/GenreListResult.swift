@@ -28,3 +28,16 @@ public struct GenreListResult: Codable {
     public var genres: [Genre]?
 
 }
+
+extension GenreListResult {
+
+    ///
+    /// Returns the names, if found for the given ids
+    /// - Parameter ids: Ids to recover the names
+    ///
+    public func names(for ids: [Int]) -> [String] {
+        guard let genres = genres else { return [""] }
+        return genres.filter({ return ids.contains($0.id ?? -1) }).compactMap({ return $0.name })
+    }
+
+}

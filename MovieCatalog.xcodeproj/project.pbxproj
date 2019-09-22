@@ -155,6 +155,7 @@
 		BB6191BA23240D81007E4C48 /* MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				BBD508BC233716BE009CA4EE /* MovieCatalogSymbols.swift */,
 				BBC609EF232F88E4002F5095 /* Apis */,
 				BB19D9B223304610004DECD6 /* Cells */,
 				BB6191F52324235E007E4C48 /* Controllers */,
@@ -203,7 +204,6 @@
 		BB6191E323241194007E4C48 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				BBD508BC233716BE009CA4EE /* MovieCatalogSymbols.swift */,
 				BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */,
 				BB58BFE0232EBB3600A13142 /* MovieCatalogCoordinator.strings */,
 			);

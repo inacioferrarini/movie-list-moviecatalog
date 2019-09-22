@@ -23,8 +23,17 @@
 
 import Foundation
 
+/// Key for MovieListSearch
 public let MovieListSearchResultKey = "movieListSearchResult"
+/// Type for MovieListSearch
 public typealias MovieListSearchResultType = MovieSearchResult
 
+/// Key for GenreListSearch
 public let GenreListSearchResultKey = "genreListSearchResult"
+/// Type for GenreListSearch
 public typealias GenreListSearchResultType = GenreListResult
+
+/// Key for SelectedMovie
+public let SelectedMovie = "selectedMovie"
+/// Type for SelectedMovie
+public typealias SelectedMovieType = Movie

@@ -24,15 +24,26 @@
 import Foundation
 import Common
 
+///
+/// MovieCatalog `Module`
+///
 public class MovieCatalogModule: Module {
 
     private var tabBar: UITabBarController
     private var appContext: AppContext
 
+    ///
+    /// Module `Coordinator`
+    ///
     public lazy var coordinator: Coordinator = {
         return MovieCatalogCoordinator(tabBar: self.tabBar, appContext: appContext)
     }()
 
+    ///
+    /// Initializes the Modules
+    /// - Parameter tabBar: `UITabBar` to be used by the module.
+    /// - Parameter appContext: `AppContext` used by the App.
+    ///
     public init(tabBar: UITabBarController, appContext: AppContext) {
         self.tabBar = tabBar
         self.appContext = appContext
