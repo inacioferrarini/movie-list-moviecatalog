@@ -1,39 +1,66 @@
+//    The MIT License (MIT)
+//
+//    Copyright (c) 2017 Inácio Ferrarini
+//
+//    Permission is hereby granted, free of charge, to any person obtaining a copy
+//    of this software and associated documentation files (the "Software"), to deal
+//    in the Software without restriction, including without limitation the rights
+//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//    copies of the Software, and to permit persons to whom the Software is
+//    furnished to do so, subject to the following conditions:
+//
+//    The above copyright notice and this permission notice shall be included in all
+//    copies or substantial portions of the Software.
+//
+//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//    SOFTWARE.
+//
+
 import Common
 
 protocol MovieCatalogViewControllerDelegate: AnyObject {
-    
+
     func movieCatalogViewController(_ movieCatalogViewController: MovieCatalogViewController, didSelected movie: Movie)
-    
+
 }
 
 class MovieCatalogViewController: UIViewController {
-    
+
+
     // MARK: - Outlets
-    
+
     @IBOutlet weak private(set) var movieCatalogView: MovieCatalogView!
-    
+
+
     // MARK: - Properties
-    
+
+    weak var appContext: AppContext?
     weak var delegate: MovieCatalogViewControllerDelegate?
-    
+
+
     // MARK: - Lifecycle
-    
+
     let dispatchGroup = DispatchGroup()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
     }
-    
+
     private func setup() {
         self.movieCatalogView.delegate = self
     }
-    
+
     private func fetchData() {
         movieCatalogView.showLoadingView()
         let api = TheMovieDatabaseApi.Movies()
@@ -49,15 +76,15 @@ class MovieCatalogViewController: UIViewController {
             self.movieCatalogView.hideLoadingView()
         }
     }
-    
+
 }
 
 extension MovieCatalogViewController: Storyboarded {}
 
 extension MovieCatalogViewController: FetchMoviesDelegate {
 
-    func handleFetchMovieSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request) {
-        print("... handleFetchMovieSuccess")
+    func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
+        appContext?.set(value: searchResult as Any, for: MovieListSearchResultKey)
         movieCatalogView.searchResult = searchResult
         dispatchGroup.leave()
     }
@@ -73,8 +100,7 @@ extension MovieCatalogViewController: FetchMoviesDelegate {
 extension MovieCatalogViewController: FetchGenresDelegate {
 
     func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request) {
-        print("... handleFetchGenresSuccess")
-        print("---> Genres \(genres)")
+        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
         dispatchGroup.leave()
     }
 

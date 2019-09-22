@@ -23,12 +23,11 @@
 
 import Foundation
 
-public struct Movie: Codable, Equatable {
+public struct MovieSearchResult: Codable {
 
-    public var title: String?
-    public var overview: String?
-    public var posterPath: String?
-    public var genreIds: [Int]?
-    public var releaseDate: String?
+    public var page: Int
+    public var totalResults: Int
+    public var totalPages: Int
+    public var results: [Movie]
 
 }

@@ -23,12 +23,8 @@
 
 import Foundation
 
-public struct Movie: Codable, Equatable {
+public let MovieListSearchResultKey = "movieListSearchResult"
+public typealias MovieListSearchResultType = MovieSearchResult
 
-    public var title: String?
-    public var overview: String?
-    public var posterPath: String?
-    public var genreIds: [Int]?
-    public var releaseDate: String?
-
-}
+public let GenreListSearchResultKey = "genreListSearchResult"
+public typealias GenreListSearchResultType = GenreListResult

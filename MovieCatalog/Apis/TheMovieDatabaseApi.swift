@@ -1,15 +1,38 @@
+//    The MIT License (MIT)
+//
+//    Copyright (c) 2017 Inácio Ferrarini
+//
+//    Permission is hereby granted, free of charge, to any person obtaining a copy
+//    of this software and associated documentation files (the "Software"), to deal
+//    in the Software without restriction, including without limitation the rights
+//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//    copies of the Software, and to permit persons to whom the Software is
+//    furnished to do so, subject to the following conditions:
+//
+//    The above copyright notice and this permission notice shall be included in all
+//    copies or substantial portions of the Software.
+//
+//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//    SOFTWARE.
+//
+
 import Foundation
 
 /// Handles response from Movie API
 protocol FetchMoviesDelegate: AnyObject {
-    
+
     /// Handles popular movies response from API
     ///
     /// - Parameters:
     ///   - searchResult: Returned movies from the API
     ///   - request: The request identifier
-    func handleFetchMovieSuccess(searchResult: SearchResult?, for request: TheMovieDatabaseApi.Request)
-    
+    func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request)
+
     /// Handles popular movies error from API
     ///
     /// - Parameters:
@@ -21,14 +44,14 @@ protocol FetchMoviesDelegate: AnyObject {
 
 /// Handles response from Genre API
 protocol FetchGenresDelegate: AnyObject {
-    
+
     /// Handles genres response from API
     ///
     /// - Parameters:
     ///   - searchResult: Returned genres from the API
     ///   - request: The request identifier
     func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request)
-    
+
     /// Handles movie genres error from API
     ///
     /// - Parameters:
@@ -51,9 +74,9 @@ struct TheMovieDatabaseApi {
         /// Request for movie genres
         case genreList
     }
-    
+
     struct Movies {
-        
+
         /// Returns the popular Movies
         ///
         /// - Parameter delegate: Delegate to handle API response
@@ -63,7 +86,7 @@ struct TheMovieDatabaseApi {
                 delegate.handleFetchMovieError(error: error, for: .popularMovies)
                 return
             }
-            
+
             var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
             request.httpMethod = "GET"
 
@@ -73,11 +96,11 @@ struct TheMovieDatabaseApi {
                         delegate.handleFetchMovieError(error: error, for: .popularMovies)
                     }
                 } else {
-                    var searchResult: SearchResult?
+                    var searchResult: MovieSearchResult?
                     if let data = data {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        searchResult = try? decoder.decode(SearchResult.self, from: data)
+                        searchResult = try? decoder.decode(MovieSearchResult.self, from: data)
                     }
                     DispatchQueue.main.async {
                         delegate.handleFetchMovieSuccess(searchResult: searchResult, for: .popularMovies)
