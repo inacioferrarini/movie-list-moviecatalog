@@ -44,7 +44,12 @@ class MovieCollectionViewCell: UICollectionViewCell, Configurable {
             }
         }
         titleLabel.text = value.title
-        favoriteStatusImage.image = Assets.Icons.Status.favoriteGray
+        let isFavorite = value.isFavorite ?? false
+        if isFavorite {
+            favoriteStatusImage.image = Assets.Icons.Status.favoriteFull
+        } else {
+            favoriteStatusImage.image = Assets.Icons.Status.favoriteGray
+        }
     }
 
 }

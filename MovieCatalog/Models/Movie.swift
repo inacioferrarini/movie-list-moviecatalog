@@ -25,11 +25,13 @@ import Foundation
 
 public struct Movie: Codable, Equatable {
 
+    public var id: Int?
     public var title: String?
     public var overview: String?
     public var posterPath: String?
     public var genreIds: [Int]?
     public var releaseDate: String?
     public var genreNames: String?
+    public var isFavorite: Bool?
 
 }

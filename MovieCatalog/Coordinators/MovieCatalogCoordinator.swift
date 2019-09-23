@@ -80,6 +80,10 @@ public class MovieCatalogCoordinator: Coordinator {
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
     }
+    
+    public func finish() {
+        print(" -- MovieCatalog Coordinator FINISH -- ")
+    }
 
 
     // MARK: - Coordinator
