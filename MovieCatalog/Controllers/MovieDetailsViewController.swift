@@ -55,12 +55,21 @@ class MovieDetailsViewController: UIViewController {
     }
 
     private func setup() {
+        self.title = viewControllerTitle
         self.movieDetailsView.delegate = self
     }
 
 }
 
 extension MovieDetailsViewController: Storyboarded {}
+
+extension MovieDetailsViewController: Internationalizable {
+
+    var viewControllerTitle: String {
+        return string("title", languageCode: "en-US")
+    }
+
+}
 
 extension MovieDetailsViewController: MovieDetailsViewDelegate {
 

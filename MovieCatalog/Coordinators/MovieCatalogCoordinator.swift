@@ -58,7 +58,6 @@ public class MovieCatalogCoordinator: Coordinator {
 
     private lazy var catalogViewController: MovieCatalogViewController? = {
         let vc = MovieCatalogViewController.instantiate(from: "MovieCatalog")
-        vc?.title = tabBarItemTitle   // HERE   -- Movie To ViewController
         vc?.delegate = self
         vc?.appContext = self.appContext
         return vc
@@ -66,7 +65,6 @@ public class MovieCatalogCoordinator: Coordinator {
 
     private lazy var detailsViewController: MovieDetailsViewController? = {
         let vc = MovieDetailsViewController.instantiate(from: "MovieCatalog")
-        vc?.title = "DETAILS"   // HERE   -- Movie To ViewController
         vc?.delegate = self
         vc?.appContext = self.appContext
         return vc
@@ -80,7 +78,7 @@ public class MovieCatalogCoordinator: Coordinator {
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
     }
-    
+
     public func finish() {
     }
 

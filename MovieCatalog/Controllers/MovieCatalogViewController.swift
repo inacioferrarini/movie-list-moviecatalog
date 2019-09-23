@@ -64,6 +64,7 @@ class MovieCatalogViewController: UIViewController {
     }
 
     private func setup() {
+        self.title = viewControllerTitle
         self.movieCatalogView.delegate = self
     }
 
@@ -81,37 +82,44 @@ class MovieCatalogViewController: UIViewController {
         dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
             self.movieCatalogView.hideLoadingView()
         }
+
     }
 
 }
 
 extension MovieCatalogViewController: Storyboarded {}
 
+extension MovieCatalogViewController: Internationalizable {
+
+    var viewControllerTitle: String {
+        return string("title", languageCode: "en-US")
+    }
+
+}
+
 extension MovieCatalogViewController: FetchMoviesDelegate {
 
     func mergeResults(searchResult: MovieSearchResult?, in previousSearchResult: MovieSearchResult?) -> MovieSearchResult? {
-guard let previousSearchResult = previousSearchResult else { return searchResult }
-guard var searchResult = searchResult else { return previousSearchResult }
-var results = previousSearchResult.results
-let newResults = searchResult.results
-results += newResults
-searchResult.results = results
-return searchResult
+        guard let previousSearchResult = previousSearchResult else { return searchResult }
+        guard var searchResult = searchResult else { return previousSearchResult }
+        var results = previousSearchResult.results
+        let newResults = searchResult.results
+        results += newResults
+        searchResult.results = results
+        return searchResult
     }
 
     func updateFavorites(searchResult: MovieSearchResult?) -> MovieSearchResult? {
-        // gambi
-guard var updatedSearchResult = searchResult else { return nil}
-guard let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") else { return searchResult }
+        guard var updatedSearchResult = searchResult else { return nil}
+        guard let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") else { return searchResult }
 
-var updatedMovies: [Movie] = []
-for var movie in updatedSearchResult.results {
-    movie.isFavorite = favoriteIds.contains(movie.id ?? -1)
-    updatedMovies.append(movie)
-}
-updatedSearchResult.results = updatedMovies
-return updatedSearchResult
-        // gambi
+        var updatedMovies: [Movie] = []
+        for var movie in updatedSearchResult.results {
+            movie.isFavorite = favoriteIds.contains(movie.id ?? -1)
+            updatedMovies.append(movie)
+        }
+        updatedSearchResult.results = updatedMovies
+        return updatedSearchResult
     }
 
     func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
