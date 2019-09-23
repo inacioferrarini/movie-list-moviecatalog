@@ -82,7 +82,6 @@ public class MovieCatalogCoordinator: Coordinator {
     }
     
     public func finish() {
-        print(" -- MovieCatalog Coordinator FINISH -- ")
     }
 
 

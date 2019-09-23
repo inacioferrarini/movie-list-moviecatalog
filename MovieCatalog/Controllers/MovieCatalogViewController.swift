@@ -54,7 +54,8 @@ class MovieCatalogViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let movieSearchResult: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        var movieSearchResult: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        movieSearchResult = updateFavorites(searchResult: movieSearchResult)
         if movieSearchResult == nil {
             fetchFavoriteMoviesData()
         } else {
@@ -155,7 +156,6 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
         let api = TheMovieDatabaseApi.Movies()
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
-            print("will fetch page \(page)")
             api.fetchPopularMovies(delegate: self, page: page)
          }
     }
