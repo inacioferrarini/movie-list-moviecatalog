@@ -66,19 +66,14 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
 
     func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
 
-        // gambi
-if let movieId = movie.id,
-    let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") {
-    var updatedFavoriteIds = favoriteIds
-    if updatedFavoriteIds.contains(movieId) {
-        updatedFavoriteIds = updatedFavoriteIds.filter({ $0 != movieId })
-    } else {
-        updatedFavoriteIds.append(movieId)
-    }
-    appContext?.set(value: favoriteIds, for: "favoriteMovies")
-print("Favorited: \(movie.id)")
-}
-        // gambi
+        if let movieId = movie.id, var favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") {
+            if favoriteIds.contains(movieId) {
+                favoriteIds = favoriteIds.filter({ return $0 != movieId })
+            } else {
+                favoriteIds.append(movieId)
+            }
+            appContext?.set(value: favoriteIds, for: "favoriteMovies")
+        }
     }
 
 }

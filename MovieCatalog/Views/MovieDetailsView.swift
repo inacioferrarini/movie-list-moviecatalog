@@ -44,11 +44,6 @@ class MovieDetailsView: UIView {
     @IBOutlet weak private(set) var favoriteButton: UIButton!
 
 
-    // MARK: - Private Properties
-
-    private var isFavorite = false
-
-
     // MARK: - Properties
 
     var movie: Movie? {
@@ -127,7 +122,8 @@ class MovieDetailsView: UIView {
     }
 
     func updateFavoriteButton() {
-        let favoriteImage = self.isFavorite
+        let isFavorite = self.movie?.isFavorite ?? false
+        let favoriteImage = isFavorite
             ? Assets.Icons.Status.favoriteFull?.withRenderingMode(.alwaysOriginal)
             : Assets.Icons.Status.favoriteGray?.withRenderingMode(.alwaysOriginal)
         favoriteButton.setImage(favoriteImage, for: .normal)
@@ -137,10 +133,12 @@ class MovieDetailsView: UIView {
     // MARK: - Action
 
     @IBAction func favorite() {
-        self.isFavorite = !isFavorite
+        var isFavorite = self.movie?.isFavorite ?? false
+        isFavorite = !isFavorite
+        self.movie?.isFavorite = isFavorite
         updateFavoriteButton()
         if let movie = movie {
-            self.delegate?.movieDetailsView(self, favorite: self.isFavorite, for: movie)
+            self.delegate?.movieDetailsView(self, favorite: isFavorite, for: movie)
         }
     }
 
