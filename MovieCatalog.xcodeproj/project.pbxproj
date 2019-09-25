@@ -24,6 +24,8 @@
 		BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */; };
 		BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6191F323242344007E4C48 /* MovieCatalog.storyboard */; };
 		BB6191F723242389007E4C48 /* MovieCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */; };
+		BB699743233B040300EBA6B3 /* Flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699742233B040300EBA6B3 /* Flow.framework */; };
+		BB699745233B040300EBA6B3 /* Ness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699744233B040300EBA6B3 /* Ness.framework */; };
 		BBC609E3232F8325002F5095 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC609E2232F8325002F5095 /* Movie.swift */; };
 		BBC609E5232F832F002F5095 /* MovieSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC609E4232F832F002F5095 /* MovieSearchResult.swift */; };
 		BBC609EC232F8527002F5095 /* MostPopularMoviesResponseData.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC609EB232F8527002F5095 /* MostPopularMoviesResponseData.json */; };
@@ -94,6 +96,8 @@
 		BB6191EA232412C1007E4C48 /* MovieCatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogCoordinator.swift; sourceTree = "<group>"; };
 		BB6191F323242344007E4C48 /* MovieCatalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieCatalog.storyboard; sourceTree = "<group>"; };
 		BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogViewController.swift; sourceTree = "<group>"; };
+		BB699742233B040300EBA6B3 /* Flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB699744233B040300EBA6B3 /* Ness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC609E2232F8325002F5095 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BBC609E4232F832F002F5095 /* MovieSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchResult.swift; sourceTree = "<group>"; };
 		BBC609E7232F8493002F5095 /* MovieCatalogTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieCatalogTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB699745233B040300EBA6B3 /* Ness.framework in Frameworks */,
+				BB699743233B040300EBA6B3 /* Flow.framework in Frameworks */,
 				BB6191E123240FC1007E4C48 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +202,8 @@
 		BB6191DF23240FC1007E4C48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB699742233B040300EBA6B3 /* Flow.framework */,
+				BB699744233B040300EBA6B3 /* Ness.framework */,
 				BB51F50C233978E80054EB57 /* SVProgressHUD.framework */,
 				BB51F514233979330054EB57 /* SVProgressHUD.framework */,
 				BBC609F4232F99A3002F5095 /* Nimble.framework */,

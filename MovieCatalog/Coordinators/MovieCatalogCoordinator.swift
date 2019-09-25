@@ -22,6 +22,7 @@
 //
 
 import Common
+import Flow
 
 public class MovieCatalogCoordinator: Coordinator {
 
