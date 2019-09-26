@@ -22,6 +22,7 @@
 //
 
 import Common
+import Ness
 
 class MovieCatalogCollectionViewDelegate<CellType: UICollectionViewCell, Type: Equatable>: PageLoaderCollectionViewDelegate<CellType, Type>,
     UICollectionViewDelegateFlowLayout

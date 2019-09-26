@@ -23,6 +23,7 @@
 
 import Common
 import Flow
+import Ness
 
 public class MovieCatalogCoordinator: Coordinator {
 

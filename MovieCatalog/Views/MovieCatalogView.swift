@@ -23,6 +23,7 @@
 
 import UIKit
 import Common
+import Ness
 
 protocol MovieCatalogViewDelegate: AnyObject {
 

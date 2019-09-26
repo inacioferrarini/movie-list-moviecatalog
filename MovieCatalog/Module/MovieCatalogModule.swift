@@ -24,6 +24,7 @@
 import Foundation
 import Common
 import Flow
+import Ness
 
 ///
 /// MovieCatalog `Module`

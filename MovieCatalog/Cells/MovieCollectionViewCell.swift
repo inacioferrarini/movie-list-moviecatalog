@@ -23,6 +23,7 @@
 
 import UIKit
 import Common
+import Ness
 
 /// Cell used to display a movie
 class MovieCollectionViewCell: UICollectionViewCell, Configurable {
