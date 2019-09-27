@@ -97,6 +97,14 @@ extension MovieCatalogViewController: Internationalizable {
         return string("title", languageCode: "en-US")
     }
 
+    var fetchPopularMoviesErrorMessage: String {
+        return string("fetchPopularMoviesErrorMessage", languageCode: "en-US")
+    }
+
+    var fetchGenresErrorMessage: String {
+        return string("fetchGenresErrorMessage", languageCode: "en-US")
+    }
+
 }
 
 extension MovieCatalogViewController: FetchMoviesDelegate {
@@ -134,8 +142,7 @@ extension MovieCatalogViewController: FetchMoviesDelegate {
     }
 
     func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
-        print("... handleFetchMovieError")
-        print("Request \(request), Error -> \(error)")
+        toast(withErrorMessage: fetchPopularMoviesErrorMessage)
         dispatchGroup.leave()
     }
 
@@ -149,8 +156,7 @@ extension MovieCatalogViewController: FetchGenresDelegate {
     }
 
     func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request) {
-        print("... handleFetchGenresError")
-        print("Request \(request), Error -> \(error)")
+        toast(withErrorMessage: fetchGenresErrorMessage)
         dispatchGroup.leave()
     }
 

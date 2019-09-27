@@ -1,1 +1,4 @@
 "title" = "Movies";
+
+"fetchPopularMoviesErrorMessage" = "Não foi possível obter os dados dos filmes mais populares. Por favor, tente novamente.";
+"fetchGenresErrorMessage" = "Não foi possível obter os dados dos gêneros de filmes. Por favor, tente novamente.";
