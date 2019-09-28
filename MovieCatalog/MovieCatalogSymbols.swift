@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,32 @@
 
 import Foundation
 
+///
 /// Key for MovieListSearch
+///
 public let MovieListSearchResultKey = "movieListSearchResult"
+
+///
 /// Type for MovieListSearch
+///
 public typealias MovieListSearchResultType = MovieSearchResult
 
+///
 /// Key for GenreListSearch
+///
 public let GenreListSearchResultKey = "genreListSearchResult"
+
+///
 /// Type for GenreListSearch
+///
 public typealias GenreListSearchResultType = GenreListResult
 
+///
 /// Key for SelectedMovie
+///
 public let SelectedMovie = "selectedMovie"
+
+///
 /// Type for SelectedMovie
+///
 public typealias SelectedMovieType = Movie

@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -33,22 +33,17 @@ protocol MovieCatalogViewDelegate: AnyObject {
 
 class MovieCatalogView: UIView {
 
-
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var contentView: UIView!
     @IBOutlet weak private(set) var searchBar: UISearchBar!
     @IBOutlet weak private(set) var collectionView: UICollectionView!
 
-
     // MARK: - Private Properties
 
     private var dataProvider = ArrayDataProvider<Movie>(section: [])
     private var collectionViewDataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
-
-    // swiftlint:disable weak_delegate
     private var collectionViewDelegate: MovieCatalogCollectionViewDelegate<MovieCollectionViewCell, Movie>?
-    // swiftlint:enable weak_delegate
 
     // MARK: - Properties
 

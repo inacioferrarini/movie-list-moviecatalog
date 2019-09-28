@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -31,18 +31,15 @@ protocol MovieDetailsViewControllerDelegate: AnyObject {
 
 class MovieDetailsViewController: UIViewController {
 
-
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var movieDetailsView: MovieDetailsView!
-
 
     // MARK: - Properties
 
     weak var delegate: MovieDetailsViewControllerDelegate?
     weak var appContext: AppContext?
     var movie: Movie?
-
 
     // MARK: - Lifecycle
 

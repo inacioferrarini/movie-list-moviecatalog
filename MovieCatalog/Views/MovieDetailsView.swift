@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,6 @@ class MovieDetailsView: UIView {
     @IBOutlet weak private(set) var overviewLabel: UILabel!
     @IBOutlet weak private(set) var favoriteButton: UIButton!
 
-
     // MARK: - Properties
 
     var movie: Movie? {
@@ -53,7 +52,6 @@ class MovieDetailsView: UIView {
     }
 
     weak var delegate: MovieDetailsViewDelegate?
-
 
     // MARK: - Initialization
 
@@ -92,7 +90,6 @@ class MovieDetailsView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
-
     // MARK: -
 
     private func setup(with movie: Movie?) {
@@ -128,7 +125,6 @@ class MovieDetailsView: UIView {
             : Assets.Icons.Status.favoriteGray?.withRenderingMode(.alwaysOriginal)
         favoriteButton.setImage(favoriteImage, for: .normal)
     }
-
 
     // MARK: - Action
 

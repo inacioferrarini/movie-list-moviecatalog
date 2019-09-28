@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -23,63 +23,86 @@
 
 import Foundation
 
+///
 /// Handles response from Movie API
+///
 protocol FetchMoviesDelegate: AnyObject {
 
+    ///
     /// Handles popular movies response from API
     ///
     /// - Parameters:
     ///   - searchResult: Returned movies from the API
     ///   - request: The request identifier
+    ///
     func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request)
 
+    ///
     /// Handles popular movies error from API
     ///
     /// - Parameters:
     ///   - error: Returned error
     ///   - request: The request identifier
+    ///
     func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request)
 
 }
 
+///
 /// Handles response from Genre API
+///
 protocol FetchGenresDelegate: AnyObject {
 
+    ///
     /// Handles genres response from API
     ///
     /// - Parameters:
     ///   - searchResult: Returned genres from the API
     ///   - request: The request identifier
+    ///
     func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request)
 
+    ///
     /// Handles movie genres error from API
     ///
     /// - Parameters:
     ///   - error: Returned error
     ///   - request: The request identifier
+    ///
     func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request)
 
 }
 
+///
 /// API for the Movie Database
+///
 struct TheMovieDatabaseApi {
 
+    ///
     /// Available requests
     ///
     /// - popularMovies: Request for popular movies
     /// - genreList: Request for movie genres
+    ///
     enum Request {
+        ///
         /// Request for popular movies
+        ///
         case popularMovies
+        
+        ///
         /// Request for movie genres
+        ///
         case genreList
     }
 
     struct Movies {
 
+        ///
         /// Returns the popular Movies
         ///
         /// - Parameter delegate: Delegate to handle API response
+        ///
         func fetchPopularMovies(delegate: FetchMoviesDelegate, page: Int = 1) {
             guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?page=1&api_key=389b2710a34413b185b37464a7cc60ce&page=\(page)") else {
                 let error = NSError(domain: "", code: 404, userInfo: nil)
@@ -110,9 +133,11 @@ struct TheMovieDatabaseApi {
             dataTask.resume()
         }
 
+        ///
         /// Returns the Movie genres
         ///
         /// - Parameter delegate: Delegate to handle API response
+        ///
         func fetchGenres(delegate: FetchGenresDelegate) {
             guard let url = URL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=389b2710a34413b185b37464a7cc60ce") else {
                 let error = NSError(domain: "", code: 404, userInfo: nil)

@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,16 @@ import UIKit
 import Common
 import Ness
 
+///
 /// Cell used to display a movie
+///
 class MovieCollectionViewCell: UICollectionViewCell, Configurable {
-
 
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var posterImage: UIImageView!
     @IBOutlet weak private(set) var titleLabel: UILabel!
     @IBOutlet weak private(set) var favoriteStatusImage: UIImageView!
-
 
     // MARK: - Setup
 

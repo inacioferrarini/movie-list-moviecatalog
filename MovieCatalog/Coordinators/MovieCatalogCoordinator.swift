@@ -1,6 +1,6 @@
 //    The MIT License (MIT)
 //
-//    Copyright (c) 2017 Inácio Ferrarini
+//    Copyright (c) 2019 Inácio Ferrarini
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,10 @@ import Ness
 
 public class MovieCatalogCoordinator: Coordinator {
 
-
     // MARK: - Private Properties
 
     private var tabBar: UITabBarController
     private var appContext: AppContext
-
 
     // MARK: - Initialization
 
@@ -40,7 +38,6 @@ public class MovieCatalogCoordinator: Coordinator {
         self.tabBar = tabBar
         self.appContext = appContext
     }
-
 
     // MARK: - Lazy Properties
 
@@ -72,7 +69,6 @@ public class MovieCatalogCoordinator: Coordinator {
         return vc
     }()
 
-
     // MARK: - Public Methods
 
     public func start() {
@@ -83,7 +79,6 @@ public class MovieCatalogCoordinator: Coordinator {
 
     public func finish() {
     }
-
 
     // MARK: - Coordinator
 
