@@ -22,6 +22,7 @@
 //
 
 import Foundation
+import Common
 
 ///
 /// Key for MovieListSearch

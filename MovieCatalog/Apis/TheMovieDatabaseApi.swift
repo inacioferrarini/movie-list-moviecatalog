@@ -22,6 +22,7 @@
 //
 
 import Foundation
+import Common
 
 ///
 /// Handles response from Movie API
