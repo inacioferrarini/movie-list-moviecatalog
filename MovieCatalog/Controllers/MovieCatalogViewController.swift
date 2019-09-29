@@ -31,7 +31,7 @@ protocol MovieCatalogViewControllerDelegate: AnyObject {
 
 }
 
-class MovieCatalogViewController: UIViewController {
+class MovieCatalogViewController: UIViewController, Storyboarded {
 
     // MARK: - Outlets
 
@@ -85,8 +85,6 @@ class MovieCatalogViewController: UIViewController {
     }
 
 }
-
-extension MovieCatalogViewController: Storyboarded {}
 
 extension MovieCatalogViewController: Internationalizable {
 

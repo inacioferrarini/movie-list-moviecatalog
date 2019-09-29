@@ -29,7 +29,7 @@ protocol MovieDetailsViewControllerDelegate: AnyObject {
 
 }
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController, Storyboarded {
 
     // MARK: - Outlets
 
@@ -59,8 +59,6 @@ class MovieDetailsViewController: UIViewController {
     }
 
 }
-
-extension MovieDetailsViewController: Storyboarded {}
 
 extension MovieDetailsViewController: Internationalizable {
 
