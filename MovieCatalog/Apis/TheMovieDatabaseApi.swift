@@ -89,7 +89,7 @@ struct TheMovieDatabaseApi {
         /// Request for popular movies
         ///
         case popularMovies
-        
+
         ///
         /// Request for movie genres
         ///
