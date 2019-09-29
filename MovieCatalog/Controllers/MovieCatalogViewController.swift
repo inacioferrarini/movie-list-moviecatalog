@@ -106,41 +106,12 @@ extension MovieCatalogViewController: Internationalizable {
 
 extension MovieCatalogViewController: FetchMoviesDelegate {
 
-    func mergeResults(searchResult: MovieSearchResult?, in previousSearchResult: MovieSearchResult?) -> MovieSearchResult? {
-        guard let previousSearchResult = previousSearchResult else { return searchResult }
-        guard var searchResult = searchResult else { return previousSearchResult }
-        var results = previousSearchResult.results
-        let newResults = searchResult.results
-        results += newResults
-        searchResult.results = results
-        return searchResult
-    }
-
-    func updateFavorites(searchResult: MovieSearchResult?) -> MovieSearchResult? {
-        guard var updatedSearchResult = searchResult else { return nil}
-        guard let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") else { return searchResult }
-
-        var updatedMovies: [Movie] = []
-        for var movie in updatedSearchResult.results {
-            movie.isFavorite = favoriteIds.contains(movie.id ?? -1)
-            updatedMovies.append(movie)
-        }
-        updatedSearchResult.results = updatedMovies
-        return updatedSearchResult
-    }
-
     func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
-        let previousSearchResult: MovieSearchResult? = appContext?.get(key: MovieListSearchResultKey)
-        let mergedSearchResult = mergeResults(searchResult: searchResult, in: previousSearchResult)
-        let updatedSearchResult = updateFavorites(searchResult: mergedSearchResult)
-        appContext?.set(value: updatedSearchResult as Any, for: MovieListSearchResultKey)
-        movieCatalogView.movieSearchResult = updatedSearchResult
-        dispatchGroup.leave()
+        self.popularMoviesResponse(searchResult)
     }
 
     func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
-        toast(withErrorMessage: fetchPopularMoviesErrorMessage)
-        dispatchGroup.leave()
+        self.popularMoviesResponse(error)
     }
 
 }

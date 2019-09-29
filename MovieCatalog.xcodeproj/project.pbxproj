@@ -40,6 +40,7 @@
 		BBC60A0A232FA430002F5095 /* MovieCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC60A09232FA430002F5095 /* MovieCatalogView.swift */; };
 		BBD508BD233716BE009CA4EE /* MovieCatalogSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD508BC233716BE009CA4EE /* MovieCatalogSymbols.swift */; };
 		BBD508C4233738AB009CA4EE /* MovieCatalogCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD508C3233738AA009CA4EE /* MovieCatalogCollectionViewDelegate.swift */; };
+		BBEBC54C2340F6380020CC25 /* MovieCatalogViewController+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEBC54B2340F6380020CC25 /* MovieCatalogViewController+Api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		BBC60A09232FA430002F5095 /* MovieCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogView.swift; sourceTree = "<group>"; };
 		BBD508BC233716BE009CA4EE /* MovieCatalogSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogSymbols.swift; sourceTree = "<group>"; };
 		BBD508C3233738AA009CA4EE /* MovieCatalogCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		BBEBC54B2340F6380020CC25 /* MovieCatalogViewController+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieCatalogViewController+Api.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */,
+				BBEBC54B2340F6380020CC25 /* MovieCatalogViewController+Api.swift */,
 				BB51F504233975EE0054EB57 /* MovieCatalogViewController.strings */,
 				BB290BA1233183CD00A5FF61 /* MovieDetailsViewController.swift */,
 				BB51F507233975F30054EB57 /* MovieDetailsViewController.strings */,
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBD508C4233738AB009CA4EE /* MovieCatalogCollectionViewDelegate.swift in Sources */,
+				BBEBC54C2340F6380020CC25 /* MovieCatalogViewController+Api.swift in Sources */,
 				BBD508BD233716BE009CA4EE /* MovieCatalogSymbols.swift in Sources */,
 				BB6191E5232411BB007E4C48 /* MovieCatalogModule.swift in Sources */,
 				BB6191EB232412C1007E4C48 /* MovieCatalogCoordinator.swift in Sources */,
