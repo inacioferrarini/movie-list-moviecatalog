@@ -41,6 +41,8 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
 
     weak var appContext: AppContext?
     weak var delegate: MovieCatalogViewControllerDelegate?
+    let api = APIs()
+    let apiKey = "389b2710a34413b185b37464a7cc60ce"
 
     // MARK: - Lifecycle
 
@@ -69,14 +71,26 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
 
     private func fetchFavoriteMoviesData() {
         movieCatalogView.showLoadingView()
-        let api = TheMovieDatabaseApi.Movies()
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
-            api.fetchPopularMovies(delegate: self)
+            self.api.movies.popularMovies(
+                apiKey: self.apiKey,
+                page: 1,
+                success: { searchResult in
+                    self.handlePopularMoviesResponse(searchResult)
+            }, failure: { error in
+                    self.handlePopularMoviesResponse(error)
+            })
         }
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
-            api.fetchGenres(delegate: self)
+            self.api.genres.genres(
+                apiKey: self.apiKey,
+                success: { genres in
+                    self.handleMovieGenresResponse(genres)
+            }, failure: { error in
+                    self.handleMovieGenresResponse(error)
+            })
         }
         dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
             self.movieCatalogView.hideLoadingView()
@@ -102,31 +116,31 @@ extension MovieCatalogViewController: Internationalizable {
 
 }
 
-extension MovieCatalogViewController: FetchMoviesDelegate {
+//extension MovieCatalogViewController: FetchMoviesDelegate {
+//
+//    func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
+//        self.handlePopularMoviesResponse(searchResult)
+//    }
+//
+//    func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
+//        self.handlePopularMoviesResponse(error)
+//    }
+//
+//}
 
-    func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
-        self.popularMoviesResponse(searchResult)
-    }
-
-    func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
-        self.popularMoviesResponse(error)
-    }
-
-}
-
-extension MovieCatalogViewController: FetchGenresDelegate {
-
-    func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request) {
-        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
-        dispatchGroup.leave()
-    }
-
-    func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request) {
-        toast(withErrorMessage: fetchGenresErrorMessage)
-        dispatchGroup.leave()
-    }
-
-}
+//extension MovieCatalogViewController: FetchGenresDelegate {
+//
+//    func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request) {
+//        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
+//        dispatchGroup.leave()
+//    }
+//
+//    func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request) {
+//        toast(withErrorMessage: fetchGenresErrorMessage)
+//        dispatchGroup.leave()
+//    }
+//
+//}
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
@@ -135,10 +149,16 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
     }
 
     func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int) {
-        let api = TheMovieDatabaseApi.Movies()
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
-            api.fetchPopularMovies(delegate: self, page: page)
+            self.api.movies.popularMovies(
+                apiKey: self.apiKey,
+                page: page,
+                success: { searchResult in
+                    self.handlePopularMoviesResponse(searchResult)
+            }, failure: { error in
+                    self.handlePopularMoviesResponse(error)
+            })
          }
     }
 

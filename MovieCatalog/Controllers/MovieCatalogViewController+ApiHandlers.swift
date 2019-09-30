@@ -35,11 +35,11 @@ extension MovieCatalogViewController {
         searchResult.results = results
         return searchResult
     }
-    
+
     func updateFavorites(searchResult: MovieSearchResult?) -> MovieSearchResult? {
         guard var updatedSearchResult = searchResult else { return nil}
         guard let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") else { return searchResult }
-        
+
         var updatedMovies: [Movie] = []
         for var movie in updatedSearchResult.results {
             movie.isFavorite = favoriteIds.contains(movie.id ?? -1)
@@ -48,8 +48,10 @@ extension MovieCatalogViewController {
         updatedSearchResult.results = updatedMovies
         return updatedSearchResult
     }
-    
-    func popularMoviesResponse(_ searchResult: MovieSearchResult?) {
+
+    // MARK: - Handles Popular Movies API response
+
+    func handlePopularMoviesResponse(_ searchResult: MovieSearchResult?) {
         let previousSearchResult: MovieSearchResult? = appContext?.get(key: MovieListSearchResultKey)
         let mergedSearchResult = mergeResults(searchResult: searchResult, in: previousSearchResult)
         let updatedSearchResult = updateFavorites(searchResult: mergedSearchResult)
@@ -58,8 +60,20 @@ extension MovieCatalogViewController {
         dispatchGroup.leave()
     }
 
-    func popularMoviesResponse(_ error: Error) {
+    func handlePopularMoviesResponse(_ error: Error) {
         toast(withErrorMessage: fetchPopularMoviesErrorMessage)
+        dispatchGroup.leave()
+    }
+
+    // MARK: - Handles Genres API response
+
+    func handleMovieGenresResponse(_ genres: GenreListResult?) {
+        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
+        dispatchGroup.leave()
+    }
+
+    func handleMovieGenresResponse(_ error: Error) {
+        toast(withErrorMessage: fetchGenresErrorMessage)
         dispatchGroup.leave()
     }
 
