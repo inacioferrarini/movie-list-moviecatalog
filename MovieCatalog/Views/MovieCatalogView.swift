@@ -49,8 +49,9 @@ class MovieCatalogView: UIView {
 
     var movieSearchResult: MovieSearchResult? {
         didSet {
-            if let movieSearchResult = movieSearchResult {
-                dataProvider.elements = [movieSearchResult.results]
+            if let movieSearchResult = movieSearchResult,
+                let results = movieSearchResult.results {
+                dataProvider.elements = [results]
                 collectionViewDataSource?.refresh()
             }
         }
@@ -126,12 +127,14 @@ extension MovieCatalogView: UICollectionViewDelegate {
 
     func shouldLoadNextPage() -> Bool {
         guard let movieSearchResult = self.movieSearchResult else { return false }
-        return movieSearchResult.page <= movieSearchResult.totalPages
+        guard let page = movieSearchResult.page else { return false }
+        guard let totalPages = movieSearchResult.totalPages else { return false }
+        return page <= totalPages
     }
 
     func loadNextPage() {
         guard let movieSearchResult = self.movieSearchResult else { return }
-        let nextPage = movieSearchResult.page + 1
+        let nextPage = (movieSearchResult.page ?? 1) + 1
         delegate?.moviewCatalogView(self, requestFavoritePage: nextPage)
     }
 

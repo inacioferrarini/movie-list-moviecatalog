@@ -28,24 +28,14 @@ extension MovieCatalogViewController {
 
     func mergeResults(searchResult: MovieSearchResult?, in previousSearchResult: MovieSearchResult?) -> MovieSearchResult? {
         guard let previousSearchResult = previousSearchResult else { return searchResult }
-        guard var searchResult = searchResult else { return previousSearchResult }
-        var results = previousSearchResult.results
-        let newResults = searchResult.results
-        results += newResults
-        searchResult.results = results
-        return searchResult
+        guard let searchResult = searchResult else { return previousSearchResult }
+        return searchResult + previousSearchResult
     }
 
     func updateFavorites(searchResult: MovieSearchResult?) -> MovieSearchResult? {
-        guard var updatedSearchResult = searchResult else { return nil}
         guard let favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") else { return searchResult }
-
-        var updatedMovies: [Movie] = []
-        for var movie in updatedSearchResult.results {
-            movie.isFavorite = favoriteIds.contains(movie.id ?? -1)
-            updatedMovies.append(movie)
-        }
-        updatedSearchResult.results = updatedMovies
+        var updatedSearchResult = searchResult
+        updatedSearchResult?.updateFavorites(favoriteIds: favoriteIds)
         return updatedSearchResult
     }
 
