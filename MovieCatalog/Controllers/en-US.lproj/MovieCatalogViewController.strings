@@ -1,4 +1,5 @@
 "title" = "Movies";
+"searchPlaceholder" = "Search";
 
 "fetchPopularMoviesErrorMessage" = "Unable to fetch popular movies data. Please, try again";
 "fetchGenresErrorMessage" = "Unable to fetch movie genres data. Please, try again";

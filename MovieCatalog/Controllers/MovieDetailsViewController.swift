@@ -56,6 +56,7 @@ class MovieDetailsViewController: UIViewController, Storyboarded {
     private func setup() {
         self.title = viewControllerTitle
         self.movieDetailsView.delegate = self
+        navigationItem.largeTitleDisplayMode = .never
     }
 
 }

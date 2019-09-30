@@ -47,6 +47,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     // MARK: - Lifecycle
 
     let dispatchGroup = DispatchGroup()
+    let searchBarController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,19 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     private func setup() {
         self.title = viewControllerTitle
         self.movieCatalogView.delegate = self
+        self.setupSearchField()
+    }
+
+    private func setupSearchField() {
+        self.navigationItem.searchController = searchBarController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+
+        self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
+        self.searchBarController.searchBar.showsCancelButton = false
+        self.searchBarController.searchBar.showsSearchResultsButton = false
+        self.searchBarController.searchBar.delegate = self
+        self.searchBarController.searchBar.placeholder = searchPlaceholder
     }
 
     private func fetchFavoriteMoviesData() {
@@ -106,6 +120,10 @@ extension MovieCatalogViewController: Internationalizable {
         return string("title", languageCode: "en-US")
     }
 
+    var searchPlaceholder: String {
+        return string("searchPlaceholder", languageCode: "en-US")
+    }
+
     var fetchPopularMoviesErrorMessage: String {
         return string("fetchPopularMoviesErrorMessage", languageCode: "en-US")
     }
@@ -115,32 +133,6 @@ extension MovieCatalogViewController: Internationalizable {
     }
 
 }
-
-//extension MovieCatalogViewController: FetchMoviesDelegate {
-//
-//    func handleFetchMovieSuccess(searchResult: MovieSearchResult?, for request: TheMovieDatabaseApi.Request) {
-//        self.handlePopularMoviesResponse(searchResult)
-//    }
-//
-//    func handleFetchMovieError(error: Error, for request: TheMovieDatabaseApi.Request) {
-//        self.handlePopularMoviesResponse(error)
-//    }
-//
-//}
-
-//extension MovieCatalogViewController: FetchGenresDelegate {
-//
-//    func handleFetchGenresSuccess(genres: GenreListResult?, for request: TheMovieDatabaseApi.Request) {
-//        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
-//        dispatchGroup.leave()
-//    }
-//
-//    func handleFetchGenresError(error: Error, for request: TheMovieDatabaseApi.Request) {
-//        toast(withErrorMessage: fetchGenresErrorMessage)
-//        dispatchGroup.leave()
-//    }
-//
-//}
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
@@ -160,6 +152,26 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
                     self.handlePopularMoviesResponse(error)
             })
          }
+    }
+
+}
+
+extension MovieCatalogViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Searchbar ... text: \(searchText)")
+//
+//        filtered = data.filter({ (text) -> Bool in
+//            let tmp: NSString = text
+//            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+//            return range.location != NSNotFound
+//        })
+//        if(filtered.count == 0){
+//            searchActive = false;
+//        } else {
+//            searchActive = true;
+//        }
+//        self.tableView.reloadData()
     }
 
 }

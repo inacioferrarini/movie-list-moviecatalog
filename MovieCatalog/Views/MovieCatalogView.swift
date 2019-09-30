@@ -36,7 +36,6 @@ class MovieCatalogView: UIView {
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var contentView: UIView!
-    @IBOutlet weak private(set) var searchBar: UISearchBar!
     @IBOutlet weak private(set) var collectionView: UICollectionView!
 
     // MARK: - Private Properties
@@ -94,17 +93,7 @@ class MovieCatalogView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        setupSearchField()
         setupCollectionView()
-    }
-
-    private func setupSearchField() {
-        searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
-        searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
-        searchBar.showsCancelButton = false
-        searchBar.showsSearchResultsButton = false
-        searchBar.delegate = self
-        searchBar.placeholder = "Search"
     }
 
     private func setupCollectionView() {
@@ -162,9 +151,5 @@ extension MovieCatalogView: UICollectionViewDelegateFlowLayout {
         let height = width * 1.25
         return CGSize(width: width, height: height)
     }
-
-}
-
-extension MovieCatalogView: UISearchBarDelegate {
 
 }

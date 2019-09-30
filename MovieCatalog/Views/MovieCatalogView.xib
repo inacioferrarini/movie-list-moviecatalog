@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +13,6 @@
             <connections>
                 <outlet property="collectionView" destination="jzI-5p-1Hj" id="YVB-He-VDs"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="jvd-ug-ZBP"/>
-                <outlet property="searchBar" destination="evx-36-8fu" id="wJd-JU-pbQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,12 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="evx-36-8fu">
-                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jzI-5p-1Hj">
-                    <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DNq-EY-fU0">
                         <size key="itemSize" width="200" height="200"/>
@@ -39,13 +33,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="evx-36-8fu" secondAttribute="trailing" id="0Er-WR-7x6"/>
                 <constraint firstAttribute="bottom" secondItem="jzI-5p-1Hj" secondAttribute="bottom" id="1A0-pR-8VO"/>
+                <constraint firstItem="jzI-5p-1Hj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Cr2-Nw-Q3K"/>
                 <constraint firstItem="jzI-5p-1Hj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ODh-8t-hOZ"/>
                 <constraint firstAttribute="trailing" secondItem="jzI-5p-1Hj" secondAttribute="trailing" id="OJb-N4-TD3"/>
-                <constraint firstItem="evx-36-8fu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gIF-Sb-B6d"/>
-                <constraint firstItem="evx-36-8fu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hoz-jD-ZZC"/>
-                <constraint firstItem="jzI-5p-1Hj" firstAttribute="top" secondItem="evx-36-8fu" secondAttribute="bottom" id="phK-Ph-eqf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="37.681159420289859" y="34.821428571428569"/>
