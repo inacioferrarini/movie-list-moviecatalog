@@ -42,7 +42,6 @@ class MovieCatalogView: UIView {
 
     private var dataProvider = ArrayDataProvider<Movie>(section: [])
     private var collectionViewDataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
-    private var collectionViewDelegate: MovieCatalogCollectionViewDelegate<MovieCollectionViewCell, Movie>?
 
     // MARK: - Properties
 

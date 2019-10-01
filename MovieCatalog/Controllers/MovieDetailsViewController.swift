@@ -72,15 +72,16 @@ extension MovieDetailsViewController: Internationalizable {
 extension MovieDetailsViewController: MovieDetailsViewDelegate {
 
     func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
+        var favoriteMovies: FavoriteMoviesType = appContext?.get(key: FavoriteMoviesKey) ?? []
+        let favoriteIds = favoriteMovies.compactMap({ return $0.id })
+        guard let movieId = movie.id else { return }
 
-        if let movieId = movie.id, var favoriteIds: [Int] = appContext?.get(key: "favoriteMovies") {
-            if favoriteIds.contains(movieId) {
-                favoriteIds = favoriteIds.filter({ return $0 != movieId })
-            } else {
-                favoriteIds.append(movieId)
-            }
-            appContext?.set(value: favoriteIds, for: "favoriteMovies")
+        if favoriteIds.contains(movieId) {
+            favoriteMovies = favoriteMovies.filter({ return $0.id != movie.id })
+        } else {
+            favoriteMovies.append(movie)
         }
+        appContext?.set(value: favoriteMovies, for: FavoriteMoviesKey)
     }
 
 }
