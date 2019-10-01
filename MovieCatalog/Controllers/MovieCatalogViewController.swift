@@ -43,11 +43,10 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     weak var delegate: MovieCatalogViewControllerDelegate?
     let api = APIs()
     let apiKey = "389b2710a34413b185b37464a7cc60ce"
-
-    // MARK: - Lifecycle
-
     let dispatchGroup = DispatchGroup()
     let searchBarController = UISearchController(searchResultsController: nil)
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
