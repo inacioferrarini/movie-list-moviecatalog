@@ -25,8 +25,6 @@
 		BB699743233B040300EBA6B3 /* Flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699742233B040300EBA6B3 /* Flow.framework */; };
 		BB699745233B040300EBA6B3 /* Ness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699744233B040300EBA6B3 /* Ness.framework */; };
 		BBBC155B233D66CD00467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB51F50C233978E80054EB57 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BBC609EC232F8527002F5095 /* MostPopularMoviesResponseData.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC609EB232F8527002F5095 /* MostPopularMoviesResponseData.json */; };
-		BBC609EE232F8568002F5095 /* MoveDetailResponseData.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC609ED232F8568002F5095 /* MoveDetailResponseData.json */; };
 		BBC609F5232F99A3002F5095 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */; };
 		BBC609F6232F99A3002F5095 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F3232F99A3002F5095 /* Quick.framework */; };
 		BBC609F7232F99A3002F5095 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F4232F99A3002F5095 /* Nimble.framework */; };
@@ -94,8 +92,6 @@
 		BB699742233B040300EBA6B3 /* Flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB699744233B040300EBA6B3 /* Ness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC609E7232F8493002F5095 /* MovieCatalogTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieCatalogTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BBC609EB232F8527002F5095 /* MostPopularMoviesResponseData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MostPopularMoviesResponseData.json; sourceTree = "<group>"; };
-		BBC609ED232F8568002F5095 /* MoveDetailResponseData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MoveDetailResponseData.json; sourceTree = "<group>"; };
 		BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		BBC609F3232F99A3002F5095 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		BBC609F4232F99A3002F5095 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -251,8 +247,6 @@
 		BBC609EA232F84CA002F5095 /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
-				BBC609EB232F8527002F5095 /* MostPopularMoviesResponseData.json */,
-				BBC609ED232F8568002F5095 /* MoveDetailResponseData.json */,
 			);
 			path = TestResources;
 			sourceTree = "<group>";
@@ -396,8 +390,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC609EE232F8568002F5095 /* MoveDetailResponseData.json in Resources */,
-				BBC609EC232F8527002F5095 /* MostPopularMoviesResponseData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
