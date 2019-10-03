@@ -74,12 +74,12 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
     func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
         guard let movieId = movie.id else { return }
         guard let appContext = self.appContext else { return }
-        
         if appContext.isFavorite(movieId: movieId) {
             appContext.remove(favorite: movie)
         } else {
             appContext.add(favorite: movie)
         }
+        self.movie = movie
     }
 
 }
