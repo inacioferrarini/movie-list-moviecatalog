@@ -50,6 +50,13 @@ class MovieDetailsViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.checkMovieIsFavorite()
+    }
+
+    private func checkMovieIsFavorite() {
+        guard let movie = self.movie else { return }
+        guard let movieId = movie.id else { return }
+        self.movie?.isFavorite = self.appContext?.isFavorite(movieId: movieId)
         movieDetailsView.movie = self.movie
     }
 
@@ -74,10 +81,17 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
     func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
         guard let movieId = movie.id else { return }
         guard let appContext = self.appContext else { return }
+
         if appContext.isFavorite(movieId: movieId) {
             appContext.remove(favorite: movie)
+            let message = string("movieWasUnfavorited", languageCode: "en-US")
+                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
+            self.toast(withSuccessMessage: message)
         } else {
             appContext.add(favorite: movie)
+            let message = string("movieWasFavorited", languageCode: "en-US")
+                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
+            self.toast(withSuccessMessage: message)
         }
         self.movie = movie
     }
