@@ -131,6 +131,10 @@ extension MovieCatalogViewController: Internationalizable {
         return string("fetchGenresErrorMessage", languageCode: "en-US")
     }
 
+    var searchWithoutResults: String {
+        return string("searchWithoutResults", languageCode: "en-US")
+    }
+
 }
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
@@ -158,9 +162,16 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 extension MovieCatalogViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Searchbar ... text: \(searchText)")
+        if searchText.count > 0 {
+            let message = searchWithoutResults
+                .replacingOccurrences(of: ":searchExpression", with: searchText)
+            movieCatalogView.showNotFoundView(message: message)
+        } else {
+            movieCatalogView.hideNotFoundView()
+        }
+
 //
-//        filtered = data.filter({ (text) -> Bool in
+//        filtered = data.filter({ (text) -> Bsdool in
 //            let tmp: NSString = text
 //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
 //            return range.location != NSNotFound

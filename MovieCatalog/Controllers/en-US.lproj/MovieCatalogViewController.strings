@@ -3,3 +3,4 @@
 
 "fetchPopularMoviesErrorMessage" = "Unable to fetch popular movies data. Please, try again";
 "fetchGenresErrorMessage" = "Unable to fetch movie genres data. Please, try again";
+"searchWithoutResults" = "Your search for \":searchExpression\" had no results.";
