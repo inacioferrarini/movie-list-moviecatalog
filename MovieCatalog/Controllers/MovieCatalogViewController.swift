@@ -45,7 +45,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     let apiKey = "389b2710a34413b185b37464a7cc60ce"
     let dispatchGroup = DispatchGroup()
     let searchBarController = UISearchController(searchResultsController: nil)
-
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -60,7 +60,8 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
         if movieSearchResult == nil {
             fetchFavoriteMoviesData()
         } else {
-            movieCatalogView.movieSearchResult = movieSearchResult
+            let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+            applyMovieFilter(expression: self.searchBarController.searchBar.text, on: results)
         }
     }
 
@@ -108,7 +109,30 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
         dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
             self.movieCatalogView.hideLoadingView()
         }
+    }
+    
+    func applyMovieFilter(expression: String?, on results: MovieListSearchResultType?) {
+        guard let expression = expression, expression.count > 0 else {
+            movieCatalogView.movieSearchResult = results
+            movieCatalogView.hideNotFoundView()
+            return
+        }
 
+        var filteredMovies: [Movie] = []
+        if let movies = results?.results?.filter({ return $0.title?.contains(expression) ?? false }) {
+            filteredMovies = movies
+        }
+
+        if filteredMovies.count > 0 {
+            var results = results
+            results?.results = filteredMovies
+            movieCatalogView.movieSearchResult = results
+            movieCatalogView.hideNotFoundView()
+        } else {
+            let message = searchWithoutResults
+                .replacingOccurrences(of: ":searchExpression", with: expression)
+            movieCatalogView.showNotFoundView(message: message)
+        }
     }
 
 }
@@ -162,26 +186,13 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 extension MovieCatalogViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 0 {
-            let message = searchWithoutResults
-                .replacingOccurrences(of: ":searchExpression", with: searchText)
-            movieCatalogView.showNotFoundView(message: message)
-        } else {
-            movieCatalogView.hideNotFoundView()
-        }
+        let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        applyMovieFilter(expression: searchText, on: results)
+    }
 
-//
-//        filtered = data.filter({ (text) -> Bsdool in
-//            let tmp: NSString = text
-//            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-//            return range.location != NSNotFound
-//        })
-//        if(filtered.count == 0){
-//            searchActive = false;
-//        } else {
-//            searchActive = true;
-//        }
-//        self.tableView.reloadData()
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        applyMovieFilter(expression: nil, on: results)
     }
 
 }
