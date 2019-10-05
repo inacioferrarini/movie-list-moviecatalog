@@ -45,7 +45,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     let apiKey = "389b2710a34413b185b37464a7cc60ce"
     let dispatchGroup = DispatchGroup()
     let searchBarController = UISearchController(searchResultsController: nil)
-    
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -60,8 +60,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
         if movieSearchResult == nil {
             fetchFavoriteMoviesData()
         } else {
-            let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
-            applyMovieFilter(expression: self.searchBarController.searchBar.text, on: results)
+            movieCatalogView.movieSearchResult = movieSearchResult
         }
     }
 
@@ -93,7 +92,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
                 success: { searchResult in
                     self.handlePopularMoviesResponse(searchResult)
             }, failure: { error in
-                    self.handlePopularMoviesResponse(error)
+                self.handlePopularMoviesResponse(error)
             })
         }
         DispatchQueue.global().async { [unowned self] in
@@ -103,36 +102,13 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
                 success: { genres in
                     self.handleMovieGenresResponse(genres)
             }, failure: { error in
-                    self.handleMovieGenresResponse(error)
+                self.handleMovieGenresResponse(error)
             })
         }
         dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
             self.movieCatalogView.hideLoadingView()
         }
-    }
-    
-    func applyMovieFilter(expression: String?, on results: MovieListSearchResultType?) {
-        guard let expression = expression, expression.count > 0 else {
-            movieCatalogView.movieSearchResult = results
-            movieCatalogView.hideNotFoundView()
-            return
-        }
 
-        var filteredMovies: [Movie] = []
-        if let movies = results?.results?.filter({ return $0.title?.contains(expression) ?? false }) {
-            filteredMovies = movies
-        }
-
-        if filteredMovies.count > 0 {
-            var results = results
-            results?.results = filteredMovies
-            movieCatalogView.movieSearchResult = results
-            movieCatalogView.hideNotFoundView()
-        } else {
-            let message = searchWithoutResults
-                .replacingOccurrences(of: ":searchExpression", with: expression)
-            movieCatalogView.showNotFoundView(message: message)
-        }
     }
 
 }
@@ -155,10 +131,6 @@ extension MovieCatalogViewController: Internationalizable {
         return string("fetchGenresErrorMessage", languageCode: "en-US")
     }
 
-    var searchWithoutResults: String {
-        return string("searchWithoutResults", languageCode: "en-US")
-    }
-
 }
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
@@ -176,9 +148,9 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
                 success: { searchResult in
                     self.handlePopularMoviesResponse(searchResult)
             }, failure: { error in
-                    self.handlePopularMoviesResponse(error)
+                self.handlePopularMoviesResponse(error)
             })
-         }
+        }
     }
 
 }
@@ -186,13 +158,19 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 extension MovieCatalogViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
-        applyMovieFilter(expression: searchText, on: results)
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        let results: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
-        applyMovieFilter(expression: nil, on: results)
+        print("Searchbar ... text: \(searchText)")
+        //
+        //        filtered = data.filter({ (text) -> Bool in
+        //            let tmp: NSString = text
+        //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+        //            return range.location != NSNotFound
+        //        })
+        //        if(filtered.count == 0){
+        //            searchActive = false;
+        //        } else {
+        //            searchActive = true;
+        //        }
+        //        self.tableView.reloadData()
     }
 
 }
