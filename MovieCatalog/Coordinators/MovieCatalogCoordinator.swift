@@ -40,12 +40,16 @@ public class MovieCatalogCoordinator: Coordinator {
     }
 
     // MARK: - Lazy Properties
+    
+    // MARK: - TabBar Management
 
     lazy var tabBarItem: UITabBarItem? = {
         return UITabBarItem(title: tabBarItemTitle,
                             image: Assets.Icons.Modules.catalog,
                             selectedImage: nil)
     }()
+
+    // MARK: - Coordinated ViewControllers
 
     public lazy var viewController: UIViewController = {
         guard let vc = catalogViewController else { return UIViewController() }
