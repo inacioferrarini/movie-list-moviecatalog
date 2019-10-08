@@ -55,7 +55,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var movieSearchResult: MovieListSearchResultType? = appContext?.get(key: MovieListSearchResultKey)
+        var movieSearchResult = appContext?.movieList
         movieSearchResult = updateFavorites(searchResult: movieSearchResult)
         if movieSearchResult == nil {
             fetchFavoriteMoviesData()

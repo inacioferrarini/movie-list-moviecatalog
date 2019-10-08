@@ -114,7 +114,7 @@ extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
 
     private func updateMovieGenreNames(movie: Movie, `default`: String = "") -> String {
         guard let genreIds = movie.genreIds else { return `default` }
-        guard let genres: GenreListSearchResultType = appContext.get(key: GenreListSearchResultKey) else { return `default` }
+        guard let genres = appContext.genreList else { return `default` }
         return genres.names(for: genreIds).joined(separator: ", ")
     }
 

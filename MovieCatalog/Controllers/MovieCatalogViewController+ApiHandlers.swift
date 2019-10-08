@@ -43,10 +43,10 @@ extension MovieCatalogViewController {
     // MARK: - Handles Popular Movies API response
 
     func handlePopularMoviesResponse(_ searchResult: MovieSearchResult?) {
-        let previousSearchResult: MovieSearchResult? = appContext?.get(key: MovieListSearchResultKey)
+        let previousSearchResult = appContext?.movieList
         let mergedSearchResult = mergeResults(searchResult: searchResult, in: previousSearchResult)
         let updatedSearchResult = updateFavorites(searchResult: mergedSearchResult)
-        appContext?.set(value: updatedSearchResult as Any, for: MovieListSearchResultKey)
+        appContext?.movieList = updatedSearchResult
         movieCatalogView.movieSearchResult = updatedSearchResult
         dispatchGroup.leave()
     }
@@ -59,7 +59,7 @@ extension MovieCatalogViewController {
     // MARK: - Handles Genres API response
 
     func handleMovieGenresResponse(_ genres: GenreListResult?) {
-        appContext?.set(value: genres as Any, for: GenreListSearchResultKey)
+        appContext?.genreList = genres
         dispatchGroup.leave()
     }
 

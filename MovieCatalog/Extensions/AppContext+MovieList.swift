@@ -22,34 +22,23 @@
 //
 
 import Foundation
+import Ness
 import Common
 
-///
-/// Key for MovieListSearch
-///
-public let MovieListSearchResultKey = "movieListSearchResult"
+private let MovieListSearchResultKey = "movieListSearchResult"
 
 ///
-/// Type for MovieListSearch
+/// Adds Movie Result manipulation capabilities to AppContext
 ///
-public typealias MovieListSearchResultType = MovieSearchResult
+public extension AppContext {
 
-///
-/// Key for GenreListSearch
-///
-public let GenreListSearchResultKey = "genreListSearchResult"
+    public var movieList: MovieSearchResult? {
+        get {
+            return get(key: MovieListSearchResultKey)
+        }
+        set (newMovieList) {
+            set(value: newMovieList as Any, for: MovieListSearchResultKey)
+        }
+    }
 
-///
-/// Type for GenreListSearch
-///
-public typealias GenreListSearchResultType = GenreListResult
-
-///
-/// Key for SelectedMovie
-///
-public let SelectedMovie = "selectedMovie"
-
-///
-/// Type for SelectedMovie
-///
-public typealias SelectedMovieType = Movie
+}
