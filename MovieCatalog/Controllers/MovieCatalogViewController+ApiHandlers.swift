@@ -33,8 +33,8 @@ extension MovieCatalogViewController {
     }
 
     func updateFavorites(searchResult: MovieSearchResult?) -> MovieSearchResult? {
-        guard let favoriteMovies: FavoriteMoviesType = appContext?.allFavorites() else { return searchResult }
-        let favoriteIds = favoriteMovies.compactMap({ return $0.id })
+        guard let favorites = appContext?.favorites else { return searchResult }
+        let favoriteIds = favorites.compactMap({ return $0.id })
         var updatedSearchResult = searchResult
         updatedSearchResult?.updateFavorites(favoriteIds: favoriteIds)
         return updatedSearchResult
