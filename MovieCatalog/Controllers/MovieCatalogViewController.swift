@@ -42,7 +42,6 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     weak var appContext: AppContext?
     weak var delegate: MovieCatalogViewControllerDelegate?
     let api = APIs()
-    let apiKey = "389b2710a34413b185b37464a7cc60ce"
     let dispatchGroup = DispatchGroup()
     let searchBarController = UISearchController(searchResultsController: nil)
 
@@ -83,11 +82,12 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
     }
 
     private func fetchFavoriteMoviesData() {
+        guard let apiKey = appContext?.theMovieDbApiKey else { return }
         movieCatalogView.showLoadingView()
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
             self.api.movies.popularMovies(
-                apiKey: self.apiKey,
+                apiKey: apiKey,
                 page: 1,
                 success: { searchResult in
                     self.handlePopularMoviesResponse(searchResult)
@@ -98,7 +98,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
             self.api.genres.genres(
-                apiKey: self.apiKey,
+                apiKey: apiKey,
                 success: { genres in
                     self.handleMovieGenresResponse(genres)
             }, failure: { error in
@@ -140,10 +140,11 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
     }
 
     func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int) {
+        guard let apiKey = appContext?.theMovieDbApiKey else { return }
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
             self.api.movies.popularMovies(
-                apiKey: self.apiKey,
+                apiKey: apiKey,
                 page: page,
                 success: { searchResult in
                     self.handlePopularMoviesResponse(searchResult)
