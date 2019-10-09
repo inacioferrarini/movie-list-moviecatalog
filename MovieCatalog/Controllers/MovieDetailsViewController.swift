@@ -71,7 +71,18 @@ class MovieDetailsViewController: UIViewController, Storyboarded {
 extension MovieDetailsViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        return string("title", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("title", languageCode: language)
+    }
+
+    var movieWasUnfavoritedMessage: String {
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("movieWasUnfavorited", languageCode: language)
+    }
+
+    var movieWasFavoritedMessage: String {
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("movieWasFavorited", languageCode: language)
     }
 
 }
@@ -84,12 +95,12 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
 
         if appContext.isFavorite(movieId: movieId) {
             appContext.remove(favorite: movie)
-            let message = string("movieWasUnfavorited", languageCode: "en-US")
+            let message = movieWasUnfavoritedMessage
                 .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
             self.toast(withSuccessMessage: message)
         } else {
             appContext.add(favorite: movie)
-            let message = string("movieWasFavorited", languageCode: "en-US")
+            let message = movieWasFavoritedMessage
                 .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
             self.toast(withSuccessMessage: message)
         }

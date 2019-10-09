@@ -40,7 +40,7 @@ public class MovieCatalogCoordinator: Coordinator {
     }
 
     // MARK: - Lazy Properties
-    
+
     // MARK: - TabBar Management
 
     lazy var tabBarItem: UITabBarItem? = {
@@ -99,7 +99,8 @@ public class MovieCatalogCoordinator: Coordinator {
 extension MovieCatalogCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
-        return string("tabBarItemTitle", languageCode: "en-US")
+        let language = appContext.appLanguage.rawValue
+        return string("tabBarItemTitle", languageCode: language)
     }
 
 }

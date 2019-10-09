@@ -116,19 +116,23 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
 extension MovieCatalogViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        return string("title", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("title", languageCode: language)
     }
 
     var searchPlaceholder: String {
-        return string("searchPlaceholder", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("searchPlaceholder", languageCode: language)
     }
 
     var fetchPopularMoviesErrorMessage: String {
-        return string("fetchPopularMoviesErrorMessage", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("fetchPopularMoviesErrorMessage", languageCode: language)
     }
 
     var fetchGenresErrorMessage: String {
-        return string("fetchGenresErrorMessage", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("fetchGenresErrorMessage", languageCode: language)
     }
 
 }
