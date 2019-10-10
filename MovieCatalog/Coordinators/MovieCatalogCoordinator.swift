@@ -25,12 +25,12 @@ import Common
 import Flow
 import Ness
 
-public class MovieCatalogCoordinator: Coordinator {
+public class MovieCatalogCoordinator: Coordinator, AppContextAware, LanguageAware {
 
     // MARK: - Private Properties
 
     private var tabBar: UITabBarController
-    private var appContext: AppContext
+    public var appContext: AppContext?
 
     // MARK: - Initialization
 
@@ -99,8 +99,7 @@ public class MovieCatalogCoordinator: Coordinator {
 extension MovieCatalogCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
-        let language = appContext.appLanguage.rawValue
-        return string("tabBarItemTitle", languageCode: language)
+        return s("tabBarItemTitle")
     }
 
 }
@@ -115,7 +114,7 @@ extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
 
     private func updateMovieGenreNames(movie: Movie, `default`: String = "") -> String {
         guard let genreIds = movie.genreIds else { return `default` }
-        guard let genres = appContext.genreList else { return `default` }
+        guard let genres = appContext?.genreList else { return `default` }
         return genres.names(for: genreIds).joined(separator: ", ")
     }
 
