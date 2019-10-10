@@ -29,7 +29,7 @@ protocol MovieDetailsViewControllerDelegate: AnyObject {
 
 }
 
-class MovieDetailsViewController: UIViewController, Storyboarded {
+class MovieDetailsViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
 
     // MARK: - Outlets
 
@@ -71,18 +71,15 @@ class MovieDetailsViewController: UIViewController, Storyboarded {
 extension MovieDetailsViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("title", languageCode: language)
+        return s("title")
     }
 
     var movieWasUnfavoritedMessage: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("movieWasUnfavorited", languageCode: language)
+        return s("movieWasUnfavorited")
     }
 
     var movieWasFavoritedMessage: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("movieWasFavorited", languageCode: language)
+        return s("movieWasFavorited")
     }
 
 }

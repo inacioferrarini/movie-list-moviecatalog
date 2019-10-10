@@ -31,7 +31,7 @@ protocol MovieCatalogViewControllerDelegate: AnyObject {
 
 }
 
-class MovieCatalogViewController: UIViewController, Storyboarded {
+class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
 
     // MARK: - Outlets
 
@@ -116,23 +116,19 @@ class MovieCatalogViewController: UIViewController, Storyboarded {
 extension MovieCatalogViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("title", languageCode: language)
+        return s("title")
     }
 
     var searchPlaceholder: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("searchPlaceholder", languageCode: language)
+        return s("searchPlaceholder")
     }
 
     var fetchPopularMoviesErrorMessage: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("fetchPopularMoviesErrorMessage", languageCode: language)
+        return s("fetchPopularMoviesErrorMessage")
     }
 
     var fetchGenresErrorMessage: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("fetchGenresErrorMessage", languageCode: language)
+        return s("fetchGenresErrorMessage")
     }
 
 }

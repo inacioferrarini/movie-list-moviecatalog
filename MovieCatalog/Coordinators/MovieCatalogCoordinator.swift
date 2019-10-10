@@ -25,12 +25,16 @@ import Common
 import Flow
 import Ness
 
-public class MovieCatalogCoordinator: Coordinator {
+public class MovieCatalogCoordinator: Coordinator, LanguageAware {
 
     // MARK: - Private Properties
 
     private var tabBar: UITabBarController
     private var appContext: AppContext
+
+public var appLanguage: Language? {
+    return appContext.appLanguage
+}
 
     // MARK: - Initialization
 
@@ -99,8 +103,7 @@ public class MovieCatalogCoordinator: Coordinator {
 extension MovieCatalogCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
-        let language = appContext.appLanguage.rawValue
-        return string("tabBarItemTitle", languageCode: language)
+        return s("tabBarItemTitle")
     }
 
 }
