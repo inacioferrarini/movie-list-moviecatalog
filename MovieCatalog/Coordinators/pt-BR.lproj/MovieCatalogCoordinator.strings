@@ -1,1 +1,5 @@
 "tabBarItemTitle" = "Filmes";
+
+/* Actions */
+"movieWasFavorited" = "O filme \":movieName\" foi adicionado aos seus favoritos.";
+"movieWasUnfavorited" = "O filme \":movieName\" foi removido dos seus favoritos.";

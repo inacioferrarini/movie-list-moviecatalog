@@ -27,6 +27,8 @@ import Ness
 
 protocol MovieDetailsViewControllerDelegate: AnyObject {
 
+    func movieDetailsViewController(_ movieDetailsViewController: MovieDetailsViewController, didFavorited movie: Movie)
+
 }
 
 class MovieDetailsViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
@@ -39,7 +41,12 @@ class MovieDetailsViewController: UIViewController, Storyboarded, AppContextAwar
 
     weak var delegate: MovieDetailsViewControllerDelegate?
     weak var appContext: AppContext?
-    var movie: Movie?
+    var movie: Movie? {
+        didSet {
+            guard let view = movieDetailsView else { return }
+            view.movie = movie
+        }
+    }
 
     // MARK: - Lifecycle
 
@@ -74,34 +81,12 @@ extension MovieDetailsViewController: Internationalizable {
         return s("title")
     }
 
-    var movieWasUnfavoritedMessage: String {
-        return s("movieWasUnfavorited")
-    }
-
-    var movieWasFavoritedMessage: String {
-        return s("movieWasFavorited")
-    }
-
 }
 
 extension MovieDetailsViewController: MovieDetailsViewDelegate {
 
     func movieDetailsView(_ moviewDetailsView: MovieDetailsView, favorite: Bool, for movie: Movie) {
-        guard let movieId = movie.id else { return }
-        guard let appContext = self.appContext else { return }
-
-        if appContext.isFavorite(movieId: movieId) {
-            appContext.remove(favorite: movie)
-            let message = movieWasUnfavoritedMessage
-                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
-            self.toast(withSuccessMessage: message)
-        } else {
-            appContext.add(favorite: movie)
-            let message = movieWasFavoritedMessage
-                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
-            self.toast(withSuccessMessage: message)
-        }
-        self.movie = movie
+        self.delegate?.movieDetailsViewController(self, didFavorited: movie)
     }
 
 }

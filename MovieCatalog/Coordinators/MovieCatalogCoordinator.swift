@@ -102,6 +102,14 @@ extension MovieCatalogCoordinator: Internationalizable {
         return s("tabBarItemTitle")
     }
 
+    var movieWasUnfavoritedMessage: String {
+        return s("movieWasUnfavorited")
+    }
+
+    var movieWasFavoritedMessage: String {
+        return s("movieWasFavorited")
+    }
+
 }
 
 extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
@@ -121,5 +129,23 @@ extension MovieCatalogCoordinator: MovieCatalogViewControllerDelegate {
 }
 
 extension MovieCatalogCoordinator: MovieDetailsViewControllerDelegate {
+
+    func movieDetailsViewController(_ movieDetailsViewController: MovieDetailsViewController, didFavorited movie: Movie) {
+        guard let movieId = movie.id else { return }
+        guard let appContext = self.appContext else { return }
+
+        if appContext.isFavorite(movieId: movieId) {
+            appContext.remove(favorite: movie)
+            let message = movieWasUnfavoritedMessage
+                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
+            movieDetailsViewController.toast(withSuccessMessage: message)
+        } else {
+            appContext.add(favorite: movie)
+            let message = movieWasFavoritedMessage
+                .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
+            movieDetailsViewController.toast(withSuccessMessage: message)
+        }
+        movieDetailsViewController.movie = movie
+    }
 
 }
