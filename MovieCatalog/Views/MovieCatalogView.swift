@@ -57,6 +57,13 @@ class MovieCatalogView: UIView {
 
     weak var delegate: MovieCatalogViewDelegate?
 
+    var predicate: NSPredicate? {
+        didSet {
+            self.dataProvider.predicate = predicate
+            collectionViewDataSource?.refresh()
+        }
+    }
+
     // MARK: - Initialization
 
     ///

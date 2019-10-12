@@ -43,7 +43,13 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
     weak var delegate: MovieCatalogViewControllerDelegate?
     let api = APIs()
     let dispatchGroup = DispatchGroup()
-    let searchBarController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: nil)
+
+    // MARK: - Search
+
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 
     // MARK: - Lifecycle
 
@@ -66,19 +72,22 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
     private func setup() {
         self.title = viewControllerTitle
         self.movieCatalogView.delegate = self
-        self.setupSearchField()
+        self.setupSearchController()
+        self.setupNavigationItem()
     }
 
-    private func setupSearchField() {
-        self.navigationItem.searchController = searchBarController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+    private func setupSearchController() {
+        self.searchController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        self.searchController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = searchPlaceholder
+        self.definesPresentationContext = true
+    }
 
-        self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
-        self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
-        self.searchBarController.searchBar.showsCancelButton = false
-        self.searchBarController.searchBar.showsSearchResultsButton = false
-        self.searchBarController.searchBar.delegate = self
-        self.searchBarController.searchBar.placeholder = searchPlaceholder
+    private func setupNavigationItem() {
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = searchController
     }
 
     private func fetchFavoriteMoviesData() {
@@ -156,22 +165,19 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
 }
 
-extension MovieCatalogViewController: UISearchBarDelegate {
+extension MovieCatalogViewController: UISearchResultsUpdating {
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Searchbar ... text: \(searchText)")
-        //
-        //        filtered = data.filter({ (text) -> Bool in
-        //            let tmp: NSString = text
-        //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-        //            return range.location != NSNotFound
-        //        })
-        //        if(filtered.count == 0){
-        //            searchActive = false;
-        //        } else {
-        //            searchActive = true;
-        //        }
-        //        self.tableView.reloadData()
+    func updateSearchResults(for searchController: UISearchController) {
+        guard self.movieCatalogView != nil else { return }
+        if let searchText = searchController.searchBar.text, searchText.count > 0 {
+            let predicate = NSPredicate(block: { (evaluatedObject, _) -> Bool in
+                guard let movie = evaluatedObject as? Movie else { return false }
+                return movie.title?.contains(searchText) ?? false
+            })
+            self.movieCatalogView.predicate = predicate
+        } else {
+            self.movieCatalogView.predicate = nil
+        }
     }
 
 }
