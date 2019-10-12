@@ -120,6 +120,21 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
 
     }
 
+    // MARK: - Filters
+
+    func applyFilters() {
+        guard self.movieCatalogView != nil else { return }
+        if let searchText = searchController.searchBar.text, searchText.count > 0 {
+            let predicate = NSPredicate(block: { (evaluatedObject, _) -> Bool in
+                guard let movie = evaluatedObject as? Movie else { return false }
+                return movie.title?.contains(searchText) ?? false
+            })
+            self.movieCatalogView.predicate = predicate
+        } else {
+            self.movieCatalogView.predicate = nil
+        }
+    }
+
 }
 
 extension MovieCatalogViewController: Internationalizable {
@@ -168,16 +183,7 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
 extension MovieCatalogViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard self.movieCatalogView != nil else { return }
-        if let searchText = searchController.searchBar.text, searchText.count > 0 {
-            let predicate = NSPredicate(block: { (evaluatedObject, _) -> Bool in
-                guard let movie = evaluatedObject as? Movie else { return false }
-                return movie.title?.contains(searchText) ?? false
-            })
-            self.movieCatalogView.predicate = predicate
-        } else {
-            self.movieCatalogView.predicate = nil
-        }
+        applyFilters()
     }
 
 }
