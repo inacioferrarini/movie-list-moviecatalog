@@ -61,6 +61,27 @@ class MovieCatalogView: UIView {
         didSet {
             self.dataProvider.predicate = predicate
             collectionViewDataSource?.refresh()
+            checkTotalResults()
+        }
+    }
+
+    var searchTextNotFoundMessage: String?
+
+    private func checkTotalResults() {
+        if self.dataProvider.isFilterActive {
+            var total = 0
+            for elements in self.dataProvider.elements {
+                total += elements.count
+            }
+            if total > 0 {
+                self.hideNotFoundView()
+            } else {
+                if let message = searchTextNotFoundMessage {
+                    self.showNotFoundView(message: message)
+                }
+            }
+        } else {
+            self.hideNotFoundView()
         }
     }
 

@@ -129,8 +129,11 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
                 guard let movie = evaluatedObject as? Movie else { return false }
                 return movie.title?.contains(searchText) ?? false
             })
+            self.movieCatalogView.searchTextNotFoundMessage = searchWithoutResults
+                .replacingOccurrences(of: ":searchExpression", with: searchText)
             self.movieCatalogView.predicate = predicate
         } else {
+            self.movieCatalogView.searchTextNotFoundMessage = nil
             self.movieCatalogView.predicate = nil
         }
     }
@@ -153,6 +156,10 @@ extension MovieCatalogViewController: Internationalizable {
 
     var fetchGenresErrorMessage: String {
         return s("fetchGenresErrorMessage")
+    }
+
+    var searchWithoutResults: String {
+        return s("searchWithoutResults")
     }
 
 }
