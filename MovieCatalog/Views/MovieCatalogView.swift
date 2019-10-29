@@ -27,8 +27,9 @@ import Ness
 
 protocol MovieCatalogViewDelegate: AnyObject {
 
-    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie)
-    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int)
+    func movieCatalogView(_ movieCatalogView: MovieCatalogView, didSelected movie: Movie)
+    func movieCatalogView(_ movieCatalogView: MovieCatalogView, requestFavoritePage page: Int)
+    func movieCatalogViewDidPullToRefresh(_ movieCatalogView: MovieCatalogView)
 }
 
 class MovieCatalogView: XibView {
@@ -39,6 +40,7 @@ class MovieCatalogView: XibView {
 
     // MARK: - Private Properties
 
+    private let refreshControl = UIRefreshControl()
     private var dataProvider = ArrayDataProvider<Movie>(section: [])
     private var collectionViewDataSource: CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>?
 
@@ -50,6 +52,9 @@ class MovieCatalogView: XibView {
                 let results = movieSearchResult.results {
                 dataProvider.elements = [results]
                 collectionViewDataSource?.refresh()
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
             }
         }
     }
@@ -88,6 +93,9 @@ class MovieCatalogView: XibView {
 
     override open func setupView() {
         setupCollectionView()
+        setupPullToRefresh()
+        collectionView.setNeedsLayout()
+        collectionView.layoutIfNeeded()
     }
 
     private func setupCollectionView() {
@@ -99,13 +107,31 @@ class MovieCatalogView: XibView {
         collectionView.delegate = self
     }
 
+    private func setupPullToRefresh() {
+        let color = Assets.Colors.NavigationBar.titleColor
+        refreshControl.tintColor = color
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: color as Any
+        ]
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetchin Data ...", attributes: attributes) // FIX: Proper handle this string
+        collectionView.refreshControl = refreshControl
+        collectionView.alwaysBounceVertical = true
+    }
+
+    // MARK: - Pull to Refresh
+
+    @objc private func didPullToRefresh() {
+        self.delegate?.movieCatalogViewDidPullToRefresh(self)
+    }
+
 }
 
 extension MovieCatalogView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movie = dataProvider[indexPath] else { return }
-        delegate?.moviewCatalogView(self, didSelected: movie)
+        delegate?.movieCatalogView(self, didSelected: movie)
     }
 
     func shouldLoadNextPage() -> Bool {
@@ -118,7 +144,7 @@ extension MovieCatalogView: UICollectionViewDelegate {
     func loadNextPage() {
         guard let movieSearchResult = self.movieSearchResult else { return }
         let nextPage = (movieSearchResult.page ?? 1) + 1
-        delegate?.moviewCatalogView(self, requestFavoritePage: nextPage)
+        delegate?.movieCatalogView(self, requestFavoritePage: nextPage)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

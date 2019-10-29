@@ -166,17 +166,32 @@ extension MovieCatalogViewController: Internationalizable {
 
 extension MovieCatalogViewController: MovieCatalogViewDelegate {
 
-    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie) {
+    func movieCatalogView(_ moviewCatalogView: MovieCatalogView, didSelected movie: Movie) {
         delegate?.movieCatalogViewController(self, didSelected: movie)
     }
 
-    func moviewCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int) {
+    func movieCatalogView(_ moviewCatalogView: MovieCatalogView, requestFavoritePage page: Int) {
         guard let apiKey = appContext?.theMovieDbApiKey else { return }
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
             self.api.movies.popularMovies(
                 apiKey: apiKey,
                 page: page,
+                success: { searchResult in
+                    self.handlePopularMoviesResponse(searchResult)
+            }, failure: { error in
+                self.handlePopularMoviesResponse(error)
+            })
+        }
+    }
+
+    func movieCatalogViewDidPullToRefresh(_ movieCatalogView: MovieCatalogView) {
+        guard let apiKey = appContext?.theMovieDbApiKey else { return }
+        DispatchQueue.global().async { [unowned self] in
+            self.dispatchGroup.enter()
+            self.api.movies.popularMovies(
+                apiKey: apiKey,
+                page: 1,
                 success: { searchResult in
                     self.handlePopularMoviesResponse(searchResult)
             }, failure: { error in
