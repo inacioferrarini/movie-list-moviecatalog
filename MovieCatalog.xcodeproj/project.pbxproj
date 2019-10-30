@@ -177,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				BBC609FF232F9B5A002F5095 /* HelperClasses */,
-				BBC609EA232F84CA002F5095 /* TestResources */,
 				BBC609E6232F8449002F5095 /* Models */,
 				BB6191C823240D81007E4C48 /* Info.plist */,
 			);
@@ -242,13 +241,6 @@
 				BBC609E7232F8493002F5095 /* MovieCatalogTests-Bridging-Header.h */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		BBC609EA232F84CA002F5095 /* TestResources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TestResources;
 			sourceTree = "<group>";
 		};
 		BBC609FF232F9B5A002F5095 /* HelperClasses */ = {
