@@ -72,8 +72,10 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
     private func setup() {
         self.title = viewControllerTitle
         self.movieCatalogView.delegate = self
+        self.movieCatalogView.appLanguage = appContext?.appLanguage
         self.setupSearchController()
         self.setupNavigationItem()
+        self.setupAccessibility()
     }
 
     private func setupSearchController() {
@@ -88,6 +90,14 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
     private func setupNavigationItem() {
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.searchController = searchController
+    }
+
+    private func setupAccessibility() {
+        self.navigationItem.isAccessibilityElement = true
+        self.navigationItem.accessibilityLabel = self.accessibilityTitleLabel
+
+        self.searchController.isAccessibilityElement = true
+        self.searchController.accessibilityLabel = self.accessibilitySearchLabel
     }
 
     private func fetchFavoriteMoviesData() {
@@ -160,6 +170,14 @@ extension MovieCatalogViewController: Internationalizable {
 
     var searchWithoutResults: String {
         return s("searchWithoutResults")
+    }
+
+    var accessibilityTitleLabel: String {
+        return s("accessibilityTitleLabel")
+    }
+
+    var accessibilitySearchLabel: String {
+        return s("accessibilitySearchLabel")
     }
 
 }

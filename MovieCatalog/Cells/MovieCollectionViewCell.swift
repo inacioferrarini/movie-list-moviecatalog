@@ -28,13 +28,33 @@ import Ness
 ///
 /// Cell used to display a movie
 ///
-class MovieCollectionViewCell: UICollectionViewCell, Configurable {
+class MovieCollectionViewCell: UICollectionViewCell, Configurable, LanguageAware {
 
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var posterImage: UIImageView!
     @IBOutlet weak private(set) var titleLabel: UILabel!
     @IBOutlet weak private(set) var favoriteStatusImage: UIImageView!
+
+    // MARK: - Properties
+
+    var appLanguage: Language?
+
+    // MARK: - Lifecycle
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupAccessibility()
+    }
+
+    // MARK: - Accessibility
+
+    func setupAccessibility() {
+        self.posterImage.isAccessibilityElement = false
+        self.titleLabel.isAccessibilityElement = false
+        self.favoriteStatusImage.isAccessibilityElement = false
+        self.isAccessibilityElement = true
+    }
 
     // MARK: - Setup
 
@@ -51,6 +71,24 @@ class MovieCollectionViewCell: UICollectionViewCell, Configurable {
         } else {
             favoriteStatusImage.image = Assets.Icons.Status.favoriteGray
         }
+
+        var contentAccessibilityLabel = self.contentAccessibilityLabel.replacingOccurrences(of: ":movie", with: value.title ?? "")
+        if isFavorite {
+            contentAccessibilityLabel += "." + self.contentAccessibilityIsFavoriteLabel
+        }
+        self.accessibilityLabel = contentAccessibilityLabel
+    }
+
+}
+
+extension MovieCollectionViewCell: Internationalizable {
+
+    var contentAccessibilityLabel: String {
+        return s("contentAccessibilityLabel")
+    }
+
+    var contentAccessibilityIsFavoriteLabel: String {
+        return s("contentAccessibilityIsFavoriteLabel")
     }
 
 }

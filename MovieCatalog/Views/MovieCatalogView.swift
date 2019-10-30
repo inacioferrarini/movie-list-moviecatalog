@@ -46,6 +46,8 @@ class MovieCatalogView: XibView {
 
     // MARK: - Properties
 
+    var appLanguage: Language?
+
     var movieSearchResult: MovieSearchResult? {
         didSet {
             if let movieSearchResult = movieSearchResult,
@@ -102,6 +104,9 @@ class MovieCatalogView: XibView {
         let nib = UINib(nibName: MovieCollectionViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.simpleClassName())
         let dataSource = CollectionViewArrayDataSource<MovieCollectionViewCell, Movie>(for: collectionView, with: dataProvider)
+        dataSource.prepareCellBlock = { [unowned self] (_ cell: MovieCollectionViewCell) in
+            cell.appLanguage = self.appLanguage
+        }
         collectionView.dataSource = dataSource
         self.collectionViewDataSource = dataSource
         collectionView.delegate = self

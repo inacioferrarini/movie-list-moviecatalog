@@ -25,6 +25,7 @@
 		BB699743233B040300EBA6B3 /* Flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699742233B040300EBA6B3 /* Flow.framework */; };
 		BB699745233B040300EBA6B3 /* Ness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699744233B040300EBA6B3 /* Ness.framework */; };
 		BBBC155B233D66CD00467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB51F50C233978E80054EB57 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBE70F7236929E60099D44D /* MovieCollectionViewCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBBE70F9236929E60099D44D /* MovieCollectionViewCell.strings */; };
 		BBC609F5232F99A3002F5095 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */; };
 		BBC609F6232F99A3002F5095 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F3232F99A3002F5095 /* Quick.framework */; };
 		BBC609F7232F99A3002F5095 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F4232F99A3002F5095 /* Nimble.framework */; };
@@ -91,6 +92,8 @@
 		BB6191F623242389007E4C48 /* MovieCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogViewController.swift; sourceTree = "<group>"; };
 		BB699742233B040300EBA6B3 /* Flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB699744233B040300EBA6B3 /* Ness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBBE70F8236929E60099D44D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/MovieCollectionViewCell.strings"; sourceTree = "<group>"; };
+		BBBE70FA236929E70099D44D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MovieCollectionViewCell.strings"; sourceTree = "<group>"; };
 		BBC609E7232F8493002F5095 /* MovieCatalogTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieCatalogTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		BBC609F3232F99A3002F5095 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 			children = (
 				BB19D9B323304634004DECD6 /* MovieCollectionViewCell.swift */,
 				BB19D9B423304634004DECD6 /* MovieCollectionViewCell.xib */,
+				BBBE70F9236929E60099D44D /* MovieCollectionViewCell.strings */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -381,6 +385,7 @@
 				BB6191F423242344007E4C48 /* MovieCatalog.storyboard in Resources */,
 				BBC60A08232FA3A9002F5095 /* MovieCatalogView.xib in Resources */,
 				BB290BA42331840B00A5FF61 /* MovieDetailsView.xib in Resources */,
+				BBBE70F7236929E60099D44D /* MovieCollectionViewCell.strings in Resources */,
 				BB19D9B623304634004DECD6 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +481,15 @@
 				BB58BFE4232EBB3B00A13142 /* pt-BR */,
 			);
 			name = MovieCatalogCoordinator.strings;
+			sourceTree = "<group>";
+		};
+		BBBE70F9236929E60099D44D /* MovieCollectionViewCell.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBBE70F8236929E60099D44D /* en-US */,
+				BBBE70FA236929E70099D44D /* pt-BR */,
+			);
+			name = MovieCollectionViewCell.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

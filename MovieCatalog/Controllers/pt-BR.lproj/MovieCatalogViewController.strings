@@ -4,3 +4,7 @@
 "fetchPopularMoviesErrorMessage" = "Não foi possível obter os dados dos filmes mais populares. Por favor, tente novamente.";
 "fetchGenresErrorMessage" = "Não foi possível obter os dados dos gêneros de filmes. Por favor, tente novamente.";
 "searchWithoutResults" = "Sua busca por \":searchExpression\" não resultou em nenhum resultado.";
+
+/* Accessibility */
+"accessibilityTitleLabel" = "Movies";
+"accessibilitySearchLabel" = "Enter expression to search";

@@ -1,0 +1,3 @@
+/* Accessibility */
+"contentAccessibilityLabel" = "Filme: :movie";
+"contentAccessibilityIsFavoriteLabel" = "É um filme favorito";
