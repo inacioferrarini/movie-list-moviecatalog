@@ -23,6 +23,7 @@
 
 import UIKit
 import Common
+import Ness
 
 protocol MovieDetailsViewDelegate: AnyObject {
 
@@ -30,7 +31,7 @@ protocol MovieDetailsViewDelegate: AnyObject {
 
 }
 
-class MovieDetailsView: XibView {
+class MovieDetailsView: XibView, LanguageAware {
 
 
     // MARK: - Outlets
@@ -50,6 +51,12 @@ class MovieDetailsView: XibView {
         }
     }
 
+    var appLanguage: Language? {
+        didSet {
+            setupAccessibility()
+        }
+    }
+
     weak var delegate: MovieDetailsViewDelegate?
 
     // MARK: - Initialization
@@ -64,20 +71,38 @@ class MovieDetailsView: XibView {
         }
 
         titleLabel.text = movie.title ?? ""
+        titleLabel.accessibilityLabel = self.accessibilityMovieTitle
+            .replacingOccurrences(of: ":movieTitle", with: movie.title ?? "")
 
         updateFavoriteButton()
 
         releaseDateLabel.text = ""
         if let year = movie.releaseDate?.toDate()?.year {
             releaseDateLabel.text = "\(year)"
+            releaseDateLabel.accessibilityLabel = self.accessibilityMovieYear
+                .replacingOccurrences(of: ":movieYear", with: "\(year)")
         }
 
         genresLabel.text = ""
         if let genres = movie.genreNames {
             genresLabel.text = genres
+            genresLabel.accessibilityLabel = self.accessibilityMovieGenres
+                .replacingOccurrences(of: ":movieGenres", with: genres)
         }
 
         overviewLabel.text = movie.overview ?? ""
+        overviewLabel.accessibilityLabel = self.accessibilityMovieDescription
+            .replacingOccurrences(of: ":movieDescription", with: movie.overview ?? "")
+        
+    }
+
+    private func setupAccessibility() {
+        self.posterImage.isAccessibilityElement = false
+        self.titleLabel.isAccessibilityElement = true
+        self.releaseDateLabel.isAccessibilityElement = true
+        self.genresLabel.isAccessibilityElement = true
+        self.overviewLabel.isAccessibilityElement = true
+        self.favoriteButton.isAccessibilityElement = true
     }
 
     func updateFavoriteButton() {
@@ -85,6 +110,13 @@ class MovieDetailsView: XibView {
         let favoriteImage = isFavorite
             ? Assets.Icons.Status.favoriteFull?.withRenderingMode(.alwaysOriginal)
             : Assets.Icons.Status.favoriteGray?.withRenderingMode(.alwaysOriginal)
+        if isFavorite {
+            favoriteButton.accessibilityLabel = accessibilityFavoriteButton
+            favoriteButton.accessibilityHint = accessibilityFavoriteButtonHint
+        } else {
+            favoriteButton.accessibilityLabel = accessibilityUnfavoriteButton
+            favoriteButton.accessibilityHint = accessibilityUnfavoriteButtonHint
+        }
         favoriteButton.setImage(favoriteImage, for: .normal)
     }
 
@@ -98,6 +130,42 @@ class MovieDetailsView: XibView {
         if let movie = movie {
             self.delegate?.movieDetailsView(self, favorite: isFavorite, for: movie)
         }
+    }
+
+}
+
+extension MovieDetailsView: Internationalizable {
+
+    var accessibilityMovieTitle: String {
+        return s("accessibilityMovieTitle")
+    }
+
+    var accessibilityMovieYear: String {
+        return s("accessibilityMovieYear")
+    }
+
+    var accessibilityMovieGenres: String {
+        return s("accessibilityMovieGenres")
+    }
+
+    var accessibilityMovieDescription: String {
+        return s("accessibilityMovieDescription")
+    }
+
+    var accessibilityFavoriteButton: String {
+        return s("accessibilityFavoriteButton")
+    }
+
+    var accessibilityFavoriteButtonHint: String {
+        return s("accessibilityFavoriteButtonHint")
+    }
+    
+    var accessibilityUnfavoriteButton: String {
+        return s("accessibilityUnfavoriteButton")
+    }
+    
+    var accessibilityUnfavoriteButtonHint: String {
+        return s("accessibilityUnfavoriteButtonHint")
     }
 
 }

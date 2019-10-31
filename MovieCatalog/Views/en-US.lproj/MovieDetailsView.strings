@@ -1,0 +1,12 @@
+"accessibilityMovieTitle" = "Title: :movieTitle";
+"accessibilityMovieYear" = "Year: :movieYear";
+"accessibilityMovieGenres" = "Genres: :movieGenres";
+"accessibilityMovieDescription" = "Description: :movieDescription";
+"accessibilityFavoriteButton" = "Favorite Movie.";
+"accessibilityFavoriteButtonHint" = "Favorites this movie.";
+"accessibilityUnfavoriteButton" = "Unfavorite Movie.";
+"accessibilityUnfavoriteButtonHint" = "Unfavorites this movie.";
+
+
+//accessibilityFavoriteButton
+//accessibilityFavoriteButtonHint

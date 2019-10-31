@@ -69,6 +69,7 @@ class MovieDetailsViewController: UIViewController, Storyboarded, AppContextAwar
 
     private func setup() {
         self.title = viewControllerTitle
+        self.movieDetailsView.appLanguage = appContext?.appLanguage
         self.movieDetailsView.delegate = self
         navigationItem.largeTitleDisplayMode = .never
     }
