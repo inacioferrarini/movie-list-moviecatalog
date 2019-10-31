@@ -93,7 +93,6 @@ class MovieDetailsView: XibView, LanguageAware {
         overviewLabel.text = movie.overview ?? ""
         overviewLabel.accessibilityLabel = self.accessibilityMovieDescription
             .replacingOccurrences(of: ":movieDescription", with: movie.overview ?? "")
-        
     }
 
     private func setupAccessibility() {
@@ -159,11 +158,11 @@ extension MovieDetailsView: Internationalizable {
     var accessibilityFavoriteButtonHint: String {
         return s("accessibilityFavoriteButtonHint")
     }
-    
+
     var accessibilityUnfavoriteButton: String {
         return s("accessibilityUnfavoriteButton")
     }
-    
+
     var accessibilityUnfavoriteButtonHint: String {
         return s("accessibilityUnfavoriteButtonHint")
     }

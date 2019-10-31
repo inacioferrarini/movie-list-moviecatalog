@@ -93,9 +93,7 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
     }
 
     private func setupAccessibility() {
-        self.navigationItem.isAccessibilityElement = true
         self.navigationItem.accessibilityLabel = self.accessibilityTitleLabel
-
         self.searchController.isAccessibilityElement = true
         self.searchController.accessibilityLabel = self.accessibilitySearchLabel
     }
