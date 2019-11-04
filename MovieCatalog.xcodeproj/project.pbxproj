@@ -31,12 +31,10 @@
 		BB979FF2236B9233005D699D /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */; };
 		BB979FF3236B9233005D699D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F3232F99A3002F5095 /* Quick.framework */; };
 		BB979FF5236B9233005D699D /* KIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB979FF4236B9233005D699D /* KIF.framework */; };
-		BB979FF7236B928D005D699D /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB51F50C233978E80054EB57 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB979FF8236B929A005D699D /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBC609F4232F99A3002F5095 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB979FF9236B92A4005D699D /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB979FFA236B92D7005D699D /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBC609F3232F99A3002F5095 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB979FFB236B9300005D699D /* KIF.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB979FF4236B9233005D699D /* KIF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BBBC155B233D66CD00467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB51F50C233978E80054EB57 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBBE70F7236929E60099D44D /* MovieCollectionViewCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBBE70F9236929E60099D44D /* MovieCollectionViewCell.strings */; };
 		BBC609F5232F99A3002F5095 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F2232F99A3002F5095 /* OHHTTPStubs.framework */; };
 		BBC609F6232F99A3002F5095 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC609F3232F99A3002F5095 /* Quick.framework */; };
@@ -80,7 +78,6 @@
 				BB979FFA236B92D7005D699D /* Quick.framework in CopyFiles */,
 				BB979FF9236B92A4005D699D /* OHHTTPStubs.framework in CopyFiles */,
 				BB979FF8236B929A005D699D /* Nimble.framework in CopyFiles */,
-				BB979FF7236B928D005D699D /* SVProgressHUD.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +87,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BBBC155B233D66CD00467BD4 /* SVProgressHUD.framework in CopyFiles */,
 				BBC609F9232F99D4002F5095 /* Nimble.framework in CopyFiles */,
 				BBC609FA232F99D4002F5095 /* OHHTTPStubs.framework in CopyFiles */,
 				BBC609FB232F99D4002F5095 /* Quick.framework in CopyFiles */,
