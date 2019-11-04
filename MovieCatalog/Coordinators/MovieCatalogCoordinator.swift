@@ -138,12 +138,12 @@ extension MovieCatalogCoordinator: MovieDetailsViewControllerDelegate {
             appContext.remove(favorite: movie)
             let message = movieWasUnfavoritedMessage
                 .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
-            movieDetailsViewController.toast(withSuccessMessage: message)
+            movieDetailsViewController.movieDetailsView.showMessage(message, kind: .success, direction: .top)
         } else {
             appContext.add(favorite: movie)
             let message = movieWasFavoritedMessage
                 .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
-            movieDetailsViewController.toast(withSuccessMessage: message)
+            movieDetailsViewController.movieDetailsView.showMessage(message, kind: .success, direction: .top)
         }
         movieDetailsViewController.movie = movie
     }

@@ -51,7 +51,7 @@ extension MovieCatalogViewController {
     }
 
     func handlePopularMoviesResponse(_ error: Error) {
-        toast(withErrorMessage: fetchPopularMoviesErrorMessage)
+        self.movieCatalogView.showMessage(fetchPopularMoviesErrorMessage, kind: .error, direction: .top)
         dispatchGroup.leave()
     }
 
@@ -63,7 +63,7 @@ extension MovieCatalogViewController {
     }
 
     func handleMovieGenresResponse(_ error: Error) {
-        toast(withErrorMessage: fetchGenresErrorMessage)
+        self.movieCatalogView.showMessage(fetchGenresErrorMessage, kind: .error, direction: .top)
         dispatchGroup.leave()
     }
 
