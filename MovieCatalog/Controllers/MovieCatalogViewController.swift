@@ -73,15 +73,14 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
         self.title = viewControllerTitle
         self.movieCatalogView.delegate = self
         self.movieCatalogView.appLanguage = appContext?.appLanguage
-        self.movieCatalogView.appTheme = appContext?.appTheme
         self.setupSearchController()
         self.setupNavigationItem()
         self.setupAccessibility()
     }
 
     private func setupSearchController() {
-        self.searchController.searchBar.barTintColor = appContext?.appTheme?.navBar.backgroundColor
-        self.searchController.searchBar.setTextBackground(appContext?.appTheme?.navBar.textBackgroundColor)
+        self.searchController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        self.searchController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = searchPlaceholder

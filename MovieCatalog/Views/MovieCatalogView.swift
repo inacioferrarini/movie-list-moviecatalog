@@ -47,7 +47,6 @@ class MovieCatalogView: XibView {
     // MARK: - Properties
 
     var appLanguage: Language?
-    var appTheme: AppThemeProtocol?
 
     var movieSearchResult: MovieSearchResult? {
         didSet {
@@ -114,7 +113,7 @@ class MovieCatalogView: XibView {
     }
 
     private func setupPullToRefresh() {
-        let color = self.appTheme?.navBar.titleColor
+        let color = Assets.Colors.NavigationBar.titleColor
         refreshControl.tintColor = color
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         let attributes: [NSAttributedString.Key: Any] = [
