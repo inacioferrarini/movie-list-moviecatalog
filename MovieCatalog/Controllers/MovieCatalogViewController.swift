@@ -106,20 +106,26 @@ class MovieCatalogViewController: UIViewController, Storyboarded, AppContextAwar
             self.api.movies.popularMovies(
                 apiKey: apiKey,
                 page: 1,
-                success: { searchResult in
-                    self.handlePopularMoviesResponse(searchResult)
-            }, failure: { error in
-                self.handlePopularMoviesResponse(error)
+                completionHandler: { (response: Response<MovieSearchResult?, Error>) in
+                    switch response {
+                    case .success(let movies):
+                        self.handlePopularMoviesResponse(movies)
+                    case .failure(let error):
+                        self.handlePopularMoviesResponse(error)
+                    }
             })
         }
         DispatchQueue.global().async { [unowned self] in
             self.dispatchGroup.enter()
             self.api.genres.genres(
                 apiKey: apiKey,
-                success: { genres in
-                    self.handleMovieGenresResponse(genres)
-            }, failure: { error in
-                self.handleMovieGenresResponse(error)
+                completionHandler: { (response: Response<GenreListResult?, Error>) in
+                    switch response {
+                    case .success(let genres):
+                        self.handleMovieGenresResponse(genres)
+                    case .failure(let error):
+                        self.handleMovieGenresResponse(error)
+                    }
             })
         }
         dispatchGroup.notify(queue: DispatchQueue.main) { [unowned self] in
@@ -193,10 +199,13 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
             self.api.movies.popularMovies(
                 apiKey: apiKey,
                 page: page,
-                success: { searchResult in
-                    self.handlePopularMoviesResponse(searchResult)
-            }, failure: { error in
-                self.handlePopularMoviesResponse(error)
+                completionHandler: { (response: Response<MovieSearchResult?, Error>) in
+                    switch response {
+                    case .success(let searchResult):
+                        self.handlePopularMoviesResponse(searchResult)
+                    case .failure(let error):
+                        self.handlePopularMoviesResponse(error)
+                    }
             })
         }
     }
@@ -208,10 +217,13 @@ extension MovieCatalogViewController: MovieCatalogViewDelegate {
             self.api.movies.popularMovies(
                 apiKey: apiKey,
                 page: 1,
-                success: { searchResult in
-                    self.handlePopularMoviesResponse(searchResult)
-            }, failure: { error in
-                self.handlePopularMoviesResponse(error)
+                completionHandler: { (response: Response<MovieSearchResult?, Error>) in
+                    switch response {
+                    case .success(let searchResult):
+                        self.handlePopularMoviesResponse(searchResult)
+                    case .failure(let error):
+                        self.handlePopularMoviesResponse(error)
+                    }
             })
         }
     }
