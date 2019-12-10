@@ -40,11 +40,20 @@ class MovieCollectionViewCell: UICollectionViewCell, Configurable, LanguageAware
 
     var appLanguage: Language?
 
+    // MARK: - Private Properties
+
+    var imageSession: URLSessionDataTask?
+
     // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupAccessibility()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imageSession?.cancel()
     }
 
     // MARK: - Accessibility
@@ -60,7 +69,7 @@ class MovieCollectionViewCell: UICollectionViewCell, Configurable, LanguageAware
 
     func setup(with value: Movie) {
         if let url = URL(string: "http://image.tmdb.org/t/p/w185//" + (value.posterPath ?? "")) {
-            UIImage.download(from: url) { [unowned self] (image, _) in
+            self.imageSession = UIImage.download(from: url) { [unowned self] (image, _) in
                 self.posterImage.image = image
             }
         }
